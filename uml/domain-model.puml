@@ -1,6 +1,6 @@
 @startuml domain model
 
-class Gorilla {
+class FamilyMember {
     name: string
     gender: string
 }
@@ -20,13 +20,12 @@ class Child {
     mother: Mother
 }
 
-Gorilla <|-- Mother
-Gorilla <|-- Father
-Gorilla <|-- Child
+FamilyMember <|-- Mother
+FamilyMember <|-- Father
+FamilyMember <|-- Child
 
 Mother "1" -- "*" Child
 Father "1" -- "*" Child
-
 Mother -- Father
 
 @enduml
