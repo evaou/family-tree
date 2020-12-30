@@ -1,0 +1,63 @@
+@startuml class diagram 
+
+enum Relationship {
+   +Paternal_Uncle 
+   +Maternal_Uncle
+   +Paternal_Aunt
+   +Maternal_Aunt
+   +Sister_In_Law
+   +Brother_In_Law
+   +Son
+   +Daughter
+   +Siblings
+}
+
+enum Gender {
+    +Male
+    +Female
+}
+
+enum Message {
+    +Child_Addition_Failure
+    +Child_Addition_Success
+    +Member_Search_Failure
+    +Relationship_Search_Failure
+}
+
+class FamilyTree {
+    +king: Father
+    +queen: Mother
+    +addChild(montherName: string, childName: string, genter: Gender): string 
+    +getRelationship(name: string, relationship: Relationship): string
+    -findFamilyMember(name: string): FamilyMember | null 
+}
+
+abstract FamilyMember {
+    +name: string
+    +gender: Gender
+    +getRelationship(relationship: Relationship): string[]
+}
+
+class Father {
+    +child: Child[]
+    +spouse: Mother
+}
+
+class Mother {
+    +child: Child[]
+    +spouse: Father 
+    +addChild(childName: string, genter: Gender): boolean
+}
+
+class Child {
+    +father: Father
+    +mother: Mother
+}
+
+FamilyTree "1..*" o-- "*" FamilyMember
+
+FamilyMember <|-- Father
+FamilyMember <|--  Mother
+FamilyMember <|--  Child 
+
+@enduml
