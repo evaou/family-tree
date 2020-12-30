@@ -7,23 +7,25 @@ class Gorilla {
 
 class Mother {
     child: Child[]
-    spouse: Gorilla
+    spouse: Father
 }
 
 class Father {
-    spouse: Gorilla
+    child: Child[]
+    spouse: Mother
 }
 
 class Child {
-    father: Gorilla
-    mother: Gorilla
+    father: Father
+    mother: Mother
 }
 
 Gorilla <|-- Mother
 Gorilla <|-- Father
 Gorilla <|-- Child
 
-Mother "1" --> "*" Child
+Mother "1" -- "*" Child
+Father "1" -- "*" Child
 
 Mother -- Father
 
