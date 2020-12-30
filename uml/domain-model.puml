@@ -1,0 +1,30 @@
+@startuml domain model
+
+class Gorilla {
+    name: string
+    gender: string
+}
+
+class Mother {
+    child: Child[]
+    spouse: Gorilla
+}
+
+class Father {
+    spouse: Gorilla
+}
+
+class Child {
+    father: Gorilla
+    mother: Gorilla
+}
+
+Gorilla <|-- Mother
+Gorilla <|-- Father
+Gorilla <|-- Child
+
+Mother "1" --> "*" Child
+
+Mother -- Father
+
+@enduml
