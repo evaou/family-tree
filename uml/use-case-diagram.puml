@@ -1,0 +1,13 @@
+@startuml use case diagram
+
+left to right direction
+
+actor Shippiter as a1
+
+usecase "Add a child" as uc1
+usecase "Find relatives" as uc2
+
+a1 --> uc1
+a1 --> uc2
+
+@enduml
