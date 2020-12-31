@@ -1,7 +1,7 @@
 {
   "name": "family-tree",
   "version": "1.0.0",
-  "description": "family tree", 
+  "description": "family tree",
   "main": "dist/app.js",
   "scripts": {
     "start": "tsc && node dist/app.js",
@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/evaou/family-tree/issues"
   },
-  "homepage": "https://github.com/evaou/family-tree#readme"
+  "homepage": "https://github.com/evaou/family-tree#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "ts-node": "^9.1.1"
+  },
+  "dependencies": {
+    "typescript": "^4.1.3"
+  }
 }
