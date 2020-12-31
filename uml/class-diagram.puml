@@ -22,20 +22,34 @@ enum Message {
     +Child_Addition_Success
     +Member_Search_Failure
     +Relationship_Search_Failure
+    +Spouse_Addition_Failure
+    +Spouse_Addition_Success
+    +King_Queen_Addition_Failure
+    +King_Queen_Addition_Success
+}
+
+class App {
+    -commands: string[]
+    +readFile(filePath: string): boolean
+    +runCommands()
 }
 
 class FamilyTree {
     +king: Father
     +queen: Mother
-    +addChild(montherName: string, childName: string, genter: Gender): string 
+    +addChild(montherName: string, childName: string, gender: Gender): string
     +getRelationship(name: string, relationship: Relationship): string
     -findFamilyMember(name: string): FamilyMember | null 
+    -addSpouse(name: string, spouseName: string, gender: Gender): string
+    -addKingQueen(kingName: string, queenName: string): string
+    -buildFamilyTree(filePath: string): boolean
 }
 
 abstract FamilyMember {
     +name: string
     +gender: Gender
     +getRelationship(relationship: Relationship): string[]
+    +addSpouse(spouseName: string, gender: Gender): boolean
 }
 
 class Father {
