@@ -29,8 +29,8 @@
 1. Prepare test environment
 
     ```
-    $ npm install --save-dev chai mocha nyc ts-node
-    $ npm install @types/chai @types/mocha
+    $ npm install --save-dev chai mocha sinon nyc ts-node
+    $ npm install @types/chai @types/mocha @types/sinon
     ```
 2. Add test script
 
