@@ -1,14 +1,39 @@
 import { expect } from "chai";
+import * as sinon from "sinon";
 import app from "../src/app";
 
-describe("calculate", function () {
-    it("add", function () {
-        let result = app.sum(5, 2);
-        expect(result).equal(7);
+describe("example", function () {
+    let filePath: string = "./tests/input/example.txt";
+    let exampleOutput: string[] = [
+        "CHILD_ADDED",
+        "Dominique Minerva",
+        "Victoire Dominique Louis",
+    ];
+    /*
+    let exampleOutput: string[] = [
+        "ADD_CHILD",
+        "GET_RELATIONSHIP",
+        "GET_RELATIONSHIP",
+    ];
+    */
+
+    it("readFile", function () {
+        let result = app.readFile(filePath);
+        expect(result).equal(true);
     });
 
-    it("substract", function () {
-        let result = app.difference(5, 2);
-        expect(result).equal(3);
+    it("runCommands", function () {
+        const sinonLog = sinon.spy(console, "log");
+        let callArray;
+        let output: string;
+
+        app.runCommands();
+
+        callArray = sinonLog.getCalls();
+
+        for (let i = 0; i < exampleOutput.length; i++) {
+            output = exampleOutput[i];
+            expect(callArray[i].firstArg).equal(output);
+        }
     });
 });
