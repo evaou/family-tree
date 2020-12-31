@@ -1,0 +1,20 @@
+{
+  "name": "family-tree",
+  "version": "1.0.0",
+  "description": "family tree", 
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evaou/family-tree.git"
+  },
+  "author": "Eva Ou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evaou/family-tree/issues"
+  },
+  "homepage": "https://github.com/evaou/family-tree#readme"
+}
