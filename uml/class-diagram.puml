@@ -37,11 +37,11 @@ class App {
 class FamilyTree {
     +king: Father
     +queen: Mother
+    +addKingQueen(kingName: string, queenName: string): string
     +addChild(montherName: string, childName: string, gender: Gender): string
+    +addSpouse(name: string, spouseName: string, gender: Gender): string
     +getRelationship(name: string, relationship: Relationship): string
     -findFamilyMember(name: string): FamilyMember | null 
-    -addSpouse(name: string, spouseName: string, gender: Gender): string
-    -addKingQueen(kingName: string, queenName: string): string
     -buildFamilyTree(filePath: string): boolean
 }
 
