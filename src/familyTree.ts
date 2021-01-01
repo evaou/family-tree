@@ -13,6 +13,10 @@ export class FamilyTree {
     }
 
     addKingQueen(kingName: string, queenName: string): void {
+        if (kingName.length <= 0 || queenName.length <= 0) {
+            return;
+        }
+
         let king = new Father(kingName);
         let queen = new Mother(queenName);
 

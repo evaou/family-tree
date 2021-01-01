@@ -1,31 +1,17 @@
 import { expect } from "chai";
 import * as sinon from "sinon";
 import app from "../src/app";
+import { FamilyTree } from "../src/familyTree";
 
-describe("add king queen", function () {
-    let filePath: string = "./tests/input/add-king-queen.txt";
-    let exampleOutput: string[] = [
-        "KING_QUEEN_ADDED"
-    ];
+describe("basic operation", function () {
+    let tree = new FamilyTree();
+    const sinonLog = sinon.spy(console, "log");
+    let callArray;
 
-    it("readFile", function () {
-        let result = app.readFile(filePath);
-        expect(result).equal(true);
-    });
-
-    it("runCommands", function () {
-        const sinonLog = sinon.spy(console, "log");
-        let callArray;
-        let output: string;
-
-        app.runCommands();
-
+    it("add king queen", function () {
+        tree.addKingQueen("Arthur", "Margre");
         callArray = sinonLog.getCalls();
-
-        for (let i = 0; i < exampleOutput.length; i++) {
-            output = exampleOutput[i];
-            expect(callArray[i].firstArg).equal(output);
-        }
+        expect(callArray[0].firstArg).equal("KING_QUEEN_ADDED");
     });
 });
 
