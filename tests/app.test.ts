@@ -9,9 +9,15 @@ describe("basic operation", function () {
     let callArray;
 
     it("add king queen", function () {
-        tree.addKingQueen("Arthur", "Margre");
+        tree.addKingQueen("Arthur", "Margret");
         callArray = sinonLog.getCalls();
         expect(callArray[0].firstArg).equal("KING_QUEEN_ADDED");
+    });
+
+    it("add child", function () {
+        tree.addChild("Margret", "Bill", "Male");
+        callArray = sinonLog.getCalls();
+        expect(callArray[0].firstArg).equal("CHILD_ADDED");
     });
 });
 
