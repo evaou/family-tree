@@ -1,6 +1,8 @@
 import * as fs from "fs";
+import { FamilyTree } from "./familyTree";
 class App {
     private commands: string[];
+    tree: FamilyTree = new FamilyTree();
 
     constructor() {
         this.commands = [];
@@ -20,6 +22,8 @@ class App {
 
         let command: string;
         let action: string;
+        let parameters: any[];
+        let result: string;
 
         for (let i = 0; i < this.commands.length; i++) {
             command = this.commands[i];
@@ -28,7 +32,44 @@ class App {
             }
 
             action = command.split(" ")[0];
-            console.log(action);
+            parameters = command.split(" ").slice(1);
+
+            switch (action) {
+                case "ADD_KING_QUEEN":
+                    result = this.tree.addKingQueen(
+                        parameters[0],
+                        parameters[1]
+                    );
+                    console.log(result);
+                    break;
+                    /*
+                case "ADD_CHILD":
+                    result = this.tree.addChild(
+                        parameters[0],
+                        parameters[1],
+                        parameters[2]
+                    );
+                    console.log(result);
+                    break;
+                case "ADD_SPOUSE":
+                    result = this.tree.addSpouse(
+                        parameters[0],
+                        parameters[1],
+                        parameters[2]
+                    );
+                    console.log(result);
+                    break;
+                case "GET_RELATIONSHIP":
+                    result = this.tree.getRelationship(
+                        parameters[0],
+                        parameters[1]
+                    );
+                    console.log(result);
+                    break;
+                    */
+                default:
+                    break;
+            }
         }
     }
 }
