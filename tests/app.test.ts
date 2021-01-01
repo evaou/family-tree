@@ -2,20 +2,13 @@ import { expect } from "chai";
 import * as sinon from "sinon";
 import app from "../src/app";
 
-describe("example", function () {
-    let filePath: string = "./tests/input/example.txt";
+describe("shippit example", function () {
+    let filePath: string = "./tests/input/shippit-example.txt";
     let exampleOutput: string[] = [
         "CHILD_ADDED",
         "Dominique Minerva",
         "Victoire Dominique Louis",
     ];
-    /*
-    let exampleOutput: string[] = [
-        "ADD_CHILD",
-        "GET_RELATIONSHIP",
-        "GET_RELATIONSHIP",
-    ];
-    */
 
     it("readFile", function () {
         let result = app.readFile(filePath);
