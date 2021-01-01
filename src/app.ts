@@ -36,13 +36,11 @@ class App {
 
             switch (action) {
                 case "ADD_KING_QUEEN":
-                    result = this.tree.addKingQueen(
-                        parameters[0],
-                        parameters[1]
-                    );
-                    console.log(result);
+                    //result = this.tree.addKingQueen(
+                    this.tree.addKingQueen(parameters[0], parameters[1]);
+                    //console.log(result);
                     break;
-                    /*
+                /*
                 case "ADD_CHILD":
                     result = this.tree.addChild(
                         parameters[0],
