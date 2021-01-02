@@ -1,7 +1,7 @@
 import * as sinon from "sinon";
 import { FamilyTree } from "../src/familyTree";
 
-describe("familyTree operation", function () {
+describe("familyTree add", function () {
     let tree = new FamilyTree();
     let sinonLog;
 
@@ -36,11 +36,24 @@ describe("familyTree operation", function () {
             throw new Error("Log was not called");
         }
     });
+});
 
-    it("get relationship", function () {
+describe("familyTree relationship", function () {
+    let tree = new FamilyTree();
+    let sinonLog;
+
+    beforeEach(() => {
+        sinonLog = sinon.spy(console, "log");
+    });
+
+    afterEach(() => {
+        sinonLog.restore();
+    });
+
+    it("maternal aunt", function () {
         tree.getRelationship("Remus", "Maternal-Aunt");
 
-        if (!sinonLog.calledOnceWith("Dominique Minerva")) {
+        if (!sinonLog.calledOnceWith("Dominique")) {
             throw new Error("Log was not called");
         }
     });
