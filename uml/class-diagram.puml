@@ -1,15 +1,15 @@
-@startuml class diagram 
+@startuml class diagram
 
 enum Relationship {
-   +Paternal_Uncle 
-   +Maternal_Uncle
-   +Paternal_Aunt
-   +Maternal_Aunt
-   +Sister_In_Law
-   +Brother_In_Law
-   +Son
-   +Daughter
-   +Siblings
+    +Paternal_Uncle
+    +Maternal_Uncle
+    +Paternal_Aunt
+    +Maternal_Aunt
+    +Sister_In_Law
+    +Brother_In_Law
+    +Son
+    +Daughter
+    +Siblings
 }
 
 enum Gender {
@@ -38,29 +38,27 @@ class FamilyTree {
     +king: Father
     +queen: Mother
     +addKingQueen(kingName: string, queenName: string): void
-    +addChild(montherName: string, childName: string, gender: Gender): string
+    +addChild(montherName: string, childName: string, gender: string): void
     +addSpouse(name: string, spouseName: string, gender: Gender): string
     +getRelationship(name: string, relationship: Relationship): string
     -findFamilyMember(name: string): FamilyMember | null
-    -buildFamilyTree(filePath: string): boolean
+    -buildFamilyTree(filePath: string): booleanGender
 }
 
-abstract FamilyMember {
+class FamilyMember {
     +name: string
     +gender: Gender
+    +spouse: FamilyMember | null
+    +child: Child[]
+    +addSpouse(spouseName: string, gender: Gender): void
     +getRelationship(relationship: Relationship): string[]
-    +addSpouse(spouseName: string, gender: Gender): boolean
 }
 
 class Father {
-    +child: Child[]
-    +spouse: Mother
 }
 
 class Mother {
-    +child: Child[]
-    +spouse: Father 
-    +addChild(childName: string, genter: Gender): boolean
+    +addChild(childName: string, genter: Gender): void
 }
 
 class Child {
@@ -72,6 +70,6 @@ FamilyTree "1..*" o-- "*" FamilyMember
 
 FamilyMember <|-- Father
 FamilyMember <|--  Mother
-FamilyMember <|--  Child 
+FamilyMember <|--  Child
 
 @enduml

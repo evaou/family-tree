@@ -20,19 +20,30 @@ export class FamilyTree {
         let king = new Father(kingName);
         let queen = new Mother(queenName);
 
+        king.addSpouse(queen);
+        queen.addSpouse(king);
+
         this.king = king;
         this.queen = queen;
 
-        this.king.spouse = this.queen;
-        this.queen.spouse = this.king;
-
         console.log("KING_QUEEN_ADDED");
     }
-    /*
-    addChild(montherName: string, childName: string, gender: string): string {
-        return "CHILD_ADDED";
+
+    addChild(motherName: string, childName: string, gender: string): void {
+        if (
+            motherName.length <= 0 ||
+            childName.length <= 0 ||
+            gender.length <= 0
+        ) {
+            return;
+        }
+
+        // findFamilyMember(motherName);
+
+        console.log("CHILD_ADDED");
     }
 
+    /*
     addSpouse(name: string, spouseName: string, gender: Gender): string {
         return "SPOUSE_ADDED";
     }
