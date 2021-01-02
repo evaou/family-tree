@@ -38,31 +38,23 @@ class App {
                 case "ADD_KING_QUEEN":
                     this.tree.addKingQueen(parameters[0], parameters[1]);
                     break;
-                /*
                 case "ADD_CHILD":
-                    result = this.tree.addChild(
+                    this.tree.addChild(
                         parameters[0],
                         parameters[1],
                         parameters[2]
                     );
-                    console.log(result);
                     break;
                 case "ADD_SPOUSE":
-                    result = this.tree.addSpouse(
+                    this.tree.addSpouse(
                         parameters[0],
                         parameters[1],
                         parameters[2]
                     );
-                    console.log(result);
                     break;
                 case "GET_RELATIONSHIP":
-                    result = this.tree.getRelationship(
-                        parameters[0],
-                        parameters[1]
-                    );
-                    console.log(result);
+                    this.tree.getRelationship(parameters[0], parameters[1]);
                     break;
-                    */
                 default:
                     break;
             }

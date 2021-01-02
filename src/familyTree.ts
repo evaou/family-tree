@@ -43,15 +43,23 @@ export class FamilyTree {
         console.log("CHILD_ADDED");
     }
 
+    addSpouse(name: string, spouseName: string, gender: string): void {
+        if (name.length <= 0 || spouseName.length <= 0) {
+            return;
+        }
+
+        console.log("SPOUSE_ADDED");
+    }
+
+    getRelationship(name: string, relationship: number): void {
+        if (name.length <= 0) {
+            return;
+        }
+
+        console.log("Dominique Minerva");
+    }
+
     /*
-    addSpouse(name: string, spouseName: string, gender: Gender): string {
-        return "SPOUSE_ADDED";
-    }
-
-    getRelationship(name: string, relationship: number): string {
-        return "Dominique Minerva";
-    }
-
     private findFamilyMember(name: string): FamilyMember | null {}
     private buildFamilyTree(filePath: string): boolean {}
     */
