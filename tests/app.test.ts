@@ -17,7 +17,7 @@ describe("basic operation", function () {
     it("add child", function () {
         tree.addChild("Margret", "Bill", "Male");
         callArray = sinonLog.getCalls();
-        expect(callArray[0].firstArg).equal("CHILD_ADDED");
+        expect(callArray[1].firstArg).equal("CHILD_ADDED");
     });
 });
 
