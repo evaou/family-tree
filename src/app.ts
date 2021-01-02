@@ -23,7 +23,6 @@ class App {
         let command: string;
         let action: string;
         let parameters: any[];
-        let result: string;
 
         for (let i = 0; i < this.commands.length; i++) {
             command = this.commands[i];
@@ -35,18 +34,8 @@ class App {
             parameters = command.split(" ").slice(1);
 
             switch (action) {
-                case "ADD_KING_QUEEN":
-                    this.tree.addKingQueen(parameters[0], parameters[1]);
-                    break;
                 case "ADD_CHILD":
                     this.tree.addChild(
-                        parameters[0],
-                        parameters[1],
-                        parameters[2]
-                    );
-                    break;
-                case "ADD_SPOUSE":
-                    this.tree.addSpouse(
                         parameters[0],
                         parameters[1],
                         parameters[2]
