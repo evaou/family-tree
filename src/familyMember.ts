@@ -5,6 +5,8 @@ export class FamilyMember {
     gender: Gender;
     spouse: FamilyMember | null;
     child: Child[];
+    father: Father;
+    mother: Mother;
 
     constructor(name: string, gender: string) {
         this.name = name;
@@ -33,7 +35,6 @@ export class FamilyMember {
         this.child.push(child);
         this.spouse.child.push(child);
     }
-    // getRelationship(relationship: Relationship): string[]
 }
 
 export class Father extends FamilyMember {
@@ -49,9 +50,6 @@ export class Mother extends FamilyMember {
 }
 
 export class Child extends FamilyMember {
-    father: Father;
-    mother: Mother;
-
     constructor(mother: Mother, childName: string, gender: string) {
         super(childName, gender);
         this.mother = mother;

@@ -72,7 +72,37 @@ export class FamilyTree {
             return;
         }
 
-        console.log("Dominique Minerva");
+        let member = this.findFamilyMember(name);
+        let result: string[] = [];
+
+        switch (relationship) {
+            case "Maternal-Aunt":
+                result = this.getSiblings(member.mother, Gender.Female);
+                break;
+            default:
+                break;
+        }
+
+        console.log(result.join(" "));
+    }
+
+    private getSiblings(
+        member: FamilyMember,
+        siblingsGender: Gender
+    ): string[] {
+        let mother = member.mother;
+        let siblings: string[] = [];
+        let child: Child;
+
+        for (let i = 0; i < mother.child.length; i++) {
+            child = mother.child[i];
+
+            if (child.gender === siblingsGender && child.name !== member.name) {
+                siblings.push(child.name);
+            }
+        }
+
+        return siblings;
     }
 
     private findFamilyMember(name: string): FamilyMember | null {
@@ -107,8 +137,6 @@ export class FamilyTree {
                 }
             }
         }
-
-        console.log("Eva: final null");
 
         return null;
     }
