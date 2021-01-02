@@ -46,5 +46,7 @@
 
     ```
     npm run test
+    npm run test -- -grep "shippit example"
+    npm run test -- -grep "familyTree operation"
     npm run coverage
     ```
