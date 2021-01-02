@@ -51,6 +51,7 @@ class FamilyMember {
     +spouse: FamilyMember | null
     +child: Child[]
     +addSpouse(spouseName: string, gender: Gender): void
+    +addChild(childName: string, genter: Gender): void
     +getRelationship(relationship: Relationship): string[]
 }
 
@@ -58,7 +59,6 @@ class Father {
 }
 
 class Mother {
-    +addChild(childName: string, genter: Gender): void
 }
 
 class Child {
