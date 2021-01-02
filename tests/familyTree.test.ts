@@ -50,6 +50,14 @@ describe("familyTree relationship", function () {
         sinonLog.restore();
     });
 
+    it("paternal uncle", function () {
+        tree.getRelationship("Molly", "Paternal-Uncle");
+
+        if (!sinonLog.calledOnceWith("Bill Charlie Ronald")) {
+            throw new Error("Log was not called");
+        }
+    });
+
     it("maternal aunt", function () {
         tree.getRelationship("Remus", "Maternal-Aunt");
 
