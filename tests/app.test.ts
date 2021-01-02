@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import * as sinon from "sinon";
 import app from "../src/app";
-import { FamilyTree } from "../src/familyTree";
 
 describe("shippit example", function () {
     let filePath: string = "./tests/input/shippit-example.txt";
@@ -29,5 +28,7 @@ describe("shippit example", function () {
             output = exampleOutput[i];
             expect(callArray[i].firstArg).equal(output);
         }
+
+        sinonLog.restore();
     });
 });
