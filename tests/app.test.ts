@@ -16,13 +16,12 @@ describe("shippit example", function () {
     });
 
     it("runCommands", function () {
-        const sinonLog = sinon.spy(console, "log");
-        let callArray;
         let output: string;
+        let sinonLog = sinon.spy(console, "log");
 
         app.runCommands();
 
-        callArray = sinonLog.getCalls();
+        let callArray = sinonLog.getCalls();
 
         for (let i = 0; i < callArray.length; i++) {
             output = exampleOutput[i];
