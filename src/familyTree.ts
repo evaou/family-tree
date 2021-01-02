@@ -67,7 +67,7 @@ export class FamilyTree {
         console.log("SPOUSE_ADDED");
     }
 
-    getRelationship(name: string, relationship: number): void {
+    getRelationship(name: string, relationship: string): void {
         if (name.length <= 0) {
             return;
         }

@@ -36,4 +36,12 @@ describe("familyTree operation", function () {
             throw new Error("Log was not called");
         }
     });
+
+    it("get relationship", function () {
+        tree.getRelationship("Remus", "Maternal-Aunt");
+
+        if (!sinonLog.calledOnceWith("Dominique Minerva")) {
+            throw new Error("Log was not called");
+        }
+    });
 });
