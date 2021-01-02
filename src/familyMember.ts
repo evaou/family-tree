@@ -21,6 +21,7 @@ export class FamilyMember {
 
     addSpouse(spouse: FamilyMember): void {
         this.spouse = spouse;
+        spouse.spouse = this;
     }
 
     addChild(childName: string, gender: string): void {

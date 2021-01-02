@@ -22,7 +22,6 @@ export class FamilyTree {
         let queen = new Mother(queenName);
 
         king.addSpouse(queen);
-        queen.addSpouse(king);
 
         this.king = king;
         this.queen = queen;
@@ -53,6 +52,15 @@ export class FamilyTree {
     addSpouse(name: string, spouseName: string, gender: string): void {
         if (name.length <= 0 || spouseName.length <= 0) {
             return;
+        }
+
+        let spouse = new FamilyMember(spouseName, gender);
+        let member = this.findFamilyMember(name);
+
+        if (!member) {
+            throw new Error("addSpouse(): Member was not found.");
+        } else {
+            member.addSpouse(spouse);
         }
 
         console.log("SPOUSE_ADDED");
