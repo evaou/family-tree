@@ -28,4 +28,12 @@ describe("familyTree operation", function () {
             throw new Error("Log was not called");
         }
     });
+
+    it("add spouse", function () {
+        tree.addSpouse("Margret", "Bill", "Male");
+
+        if (!sinonLog.calledOnceWith("SPOUSE_ADDED")) {
+            throw new Error("Log was not called");
+        }
+    });
 });
