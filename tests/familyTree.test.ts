@@ -30,7 +30,7 @@ describe("familyTree operation", function () {
     });
 
     it("add spouse", function () {
-        tree.addSpouse("Margret", "Bill", "Male");
+        tree.addSpouse("Bill", "Flora", "Female");
 
         if (!sinonLog.calledOnceWith("SPOUSE_ADDED")) {
             throw new Error("Log was not called");
