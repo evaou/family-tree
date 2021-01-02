@@ -1,4 +1,5 @@
 import { FamilyMember, Father, Mother, Child } from "./familyMember";
+import { Gender } from "./familyAttribute";
 
 //const filePath: string = "./res/tree.txt";
 
@@ -38,7 +39,13 @@ export class FamilyTree {
             return;
         }
 
-        // findFamilyMember(motherName);
+        let mother = this.findFamilyMember(motherName);
+
+        if (!mother) {
+            throw new Error("addChild(): Mother was not found.");
+        } else {
+            mother.addChild(childName, gender);
+        }
 
         console.log("CHILD_ADDED");
     }
@@ -59,8 +66,45 @@ export class FamilyTree {
         console.log("Dominique Minerva");
     }
 
+    private findFamilyMember(name: string): FamilyMember | null {
+        if (name.length <= 0) {
+            return null;
+        }
+
+        if (this.king === null || this.queen === null) {
+            return null;
+        }
+
+        let queue: FamilyMember[] = [this.king, this.queen];
+        let currentMember: FamilyMember;
+
+        while (queue.length > 0) {
+            currentMember = queue.shift();
+
+            if (name === currentMember.name) {
+                return currentMember;
+            }
+
+            if (
+                currentMember.gender === Gender.Female &&
+                currentMember.child.length > 0
+            ) {
+                for (let i = 0; i < currentMember.child.length; i++) {
+                    let child = currentMember.child[i];
+                    queue.push(child);
+                    if (child.spouse) {
+                        queue.push(child.spouse);
+                    }
+                }
+            }
+        }
+
+        console.log("Eva: final null");
+
+        return null;
+    }
+
     /*
-    private findFamilyMember(name: string): FamilyMember | null {}
     private buildFamilyTree(filePath: string): boolean {}
     */
 }

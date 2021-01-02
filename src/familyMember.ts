@@ -23,6 +23,15 @@ export class FamilyMember {
         this.spouse = spouse;
     }
 
+    addChild(childName: string, gender: string): void {
+        if (!this.spouse || this.gender !== Gender.Female) {
+            throw new Error("only Mother could add child.");
+        }
+
+        let child = new Child(this, childName, gender);
+        this.child.push(child);
+        this.spouse.child.push(child);
+    }
     // getRelationship(relationship: Relationship): string[]
 }
 
@@ -35,12 +44,6 @@ export class Father extends FamilyMember {
 export class Mother extends FamilyMember {
     constructor(name: string) {
         super(name, "Female");
-    }
-
-    addChild(childName: string, gender: string): void {
-        let child = new Child(this, childName, gender);
-        this.child.push(child);
-        this.spouse.child.push(child);
     }
 }
 
