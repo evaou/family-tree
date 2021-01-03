@@ -94,6 +94,11 @@ export class FamilyTree {
                 siblingSpouses = this.getSiblingSpouse(member, Gender.Female);
                 result = result.concat(siblingSpouses);
                 break;
+            case "Brother-In-Law":
+                result = this.getSibling(member.spouse, Gender.Male);
+                siblingSpouses = this.getSiblingSpouse(member, Gender.Male);
+                result = result.concat(siblingSpouses);
+                break;
             default:
                 break;
         }
@@ -128,6 +133,10 @@ export class FamilyTree {
         let mother = member.mother;
         let spouses: string[] = [];
         let child: Child;
+
+        if (!mother) {
+            return spouses;
+        }
 
         for (let i = 0; i < mother.child.length; i++) {
             child = mother.child[i];

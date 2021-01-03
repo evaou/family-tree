@@ -90,4 +90,11 @@ describe("familyTree relationship", function () {
         }
     });
 
+    it("borther in law", function () {
+        tree.getRelationship("Helen", "Brother-In-Law");
+
+        if (!sinonLog.calledOnceWith("Bill Charlie Percy")) {
+            throw new Error("Log was not called");
+        }
+    });
 });
