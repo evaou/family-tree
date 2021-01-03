@@ -42,10 +42,10 @@ export class FamilyTree {
         let mother = this.findFamilyMember(motherName);
 
         if (!mother) {
-            throw new Error("addChild(): Mother was not found.");
-        } else {
-            mother.addChild(childName, gender);
+            return;
         }
+
+        mother.addChild(childName, gender);
 
         console.log("CHILD_ADDED");
     }
@@ -59,10 +59,10 @@ export class FamilyTree {
         let member = this.findFamilyMember(name);
 
         if (!member) {
-            throw new Error("addSpouse(): Member was not found.");
-        } else {
-            member.addSpouse(spouse);
+            return;
         }
+
+        member.addSpouse(spouse);
 
         console.log("SPOUSE_ADDED");
     }
@@ -73,6 +73,11 @@ export class FamilyTree {
         }
 
         let member = this.findFamilyMember(name);
+
+        if (!member) {
+            return;
+        }
+
         let siblingSpouses: string[] = [];
         let result: string[] = [];
 
@@ -191,11 +196,15 @@ export class FamilyTree {
     }
 
     private findFamilyMember(name: string): FamilyMember | null {
+        let errorMessage: string = "PERSON_NOT_FOUND";
+
         if (name.length <= 0) {
+            console.log(errorMessage);
             return null;
         }
 
         if (this.king === null || this.queen === null) {
+            console.log(errorMessage);
             return null;
         }
 
@@ -223,6 +232,7 @@ export class FamilyTree {
             }
         }
 
+        console.log(errorMessage);
         return null;
     }
 
