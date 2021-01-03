@@ -73,20 +73,26 @@ export class FamilyTree {
         }
 
         let member = this.findFamilyMember(name);
+        let siblingSpouses: string[] = [];
         let result: string[] = [];
 
         switch (relationship) {
             case "Paternal-Uncle":
-                result = this.getSiblings(member.father, Gender.Male);
+                result = this.getSibling(member.father, Gender.Male);
                 break;
             case "Maternal-Uncle":
-                result = this.getSiblings(member.mother, Gender.Male);
+                result = this.getSibling(member.mother, Gender.Male);
                 break;
             case "Paternal-Aunt":
-                result = this.getSiblings(member.father, Gender.Female);
+                result = this.getSibling(member.father, Gender.Female);
                 break;
             case "Maternal-Aunt":
-                result = this.getSiblings(member.mother, Gender.Female);
+                result = this.getSibling(member.mother, Gender.Female);
+                break;
+            case "Sister-In-Law":
+                result = this.getSibling(member.spouse, Gender.Female);
+                siblingSpouses = this.getSiblingSpouse(member, Gender.Female);
+                result = result.concat(siblingSpouses);
                 break;
             default:
                 break;
@@ -95,18 +101,19 @@ export class FamilyTree {
         console.log(result.join(" "));
     }
 
-    private getSiblings(
-        member: FamilyMember,
-        siblingsGender: Gender
-    ): string[] {
+    private getSibling(member: FamilyMember, siblingGender: Gender): string[] {
         let mother = member.mother;
         let siblings: string[] = [];
         let child: Child;
 
+        if (!mother) {
+            return siblings;
+        }
+
         for (let i = 0; i < mother.child.length; i++) {
             child = mother.child[i];
 
-            if (child.gender === siblingsGender && child.name !== member.name) {
+            if (child.gender === siblingGender && child.name !== member.name) {
                 siblings.push(child.name);
             }
         }
@@ -114,6 +121,28 @@ export class FamilyTree {
         return siblings;
     }
 
+    private getSiblingSpouse(
+        member: FamilyMember,
+        spouseGender: Gender
+    ): string[] {
+        let mother = member.mother;
+        let spouses: string[] = [];
+        let child: Child;
+
+        for (let i = 0; i < mother.child.length; i++) {
+            child = mother.child[i];
+
+            if (
+                child.gender !== spouseGender &&
+                child.name !== member.name &&
+                child.spouse
+            ) {
+                spouses.push(child.spouse.name);
+            }
+        }
+
+        return spouses;
+    }
     private findFamilyMember(name: string): FamilyMember | null {
         if (name.length <= 0) {
             return null;

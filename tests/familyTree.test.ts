@@ -81,4 +81,13 @@ describe("familyTree relationship", function () {
             throw new Error("Log was not called");
         }
     });
+
+    it("sister in law", function () {
+        tree.getRelationship("Ronald", "Sister-In-Law");
+
+        if (!sinonLog.calledOnceWith("Flora Audrey")) {
+            throw new Error("Log was not called");
+        }
+    });
+
 });
