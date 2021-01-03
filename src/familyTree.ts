@@ -45,7 +45,9 @@ export class FamilyTree {
             return;
         }
 
-        mother.addChild(childName, gender);
+        if (!mother.addChild(childName, gender)) {
+            return;
+        }
 
         console.log("CHILD_ADDED");
     }
@@ -117,7 +119,9 @@ export class FamilyTree {
                 break;
         }
 
-        console.log(result.join(" "));
+        if (result.length > 0) {
+            console.log(result.join(" "));
+        }
     }
 
     private getSibling(
@@ -127,6 +131,7 @@ export class FamilyTree {
         let mother = member.mother;
         let siblings: string[] = [];
         let child: Child;
+        let errorMessage: string = "NONE";
 
         if (!mother) {
             return siblings;
@@ -144,6 +149,10 @@ export class FamilyTree {
             }
 
             siblings.push(child.name);
+        }
+
+        if (siblings.length === 0) {
+            console.log(errorMessage);
         }
 
         return siblings;

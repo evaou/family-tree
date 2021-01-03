@@ -57,3 +57,55 @@ describe("shippit sample 1", function () {
         sinonLog.restore();
     });
 });
+
+describe("shippit sample 2", function () {
+    let filePath: string = "./tests/input/shippit-sample-2.txt";
+    let exampleOutput: string[] = ["CHILD_ADDITION_FAILED", "NONE"];
+
+    it("readFile", function () {
+        let result = app.readFile(filePath);
+        expect(result).equal(true);
+    });
+
+    it("runCommands", function () {
+        let output: string;
+        let sinonLog = sinon.spy(console, "log");
+
+        app.runCommands();
+
+        let callArray = sinonLog.getCalls();
+
+        for (let i = 0; i < callArray.length; i++) {
+            output = exampleOutput[i];
+            expect(callArray[i].firstArg).equal(output);
+        }
+
+        sinonLog.restore();
+    });
+});
+
+describe("shippit sample 3", function () {
+    let filePath: string = "./tests/input/shippit-sample-3.txt";
+    let exampleOutput: string[] = ["Darcy Alice"];
+
+    it("readFile", function () {
+        let result = app.readFile(filePath);
+        expect(result).equal(true);
+    });
+
+    it("runCommands", function () {
+        let output: string;
+        let sinonLog = sinon.spy(console, "log");
+
+        app.runCommands();
+
+        let callArray = sinonLog.getCalls();
+
+        for (let i = 0; i < callArray.length; i++) {
+            output = exampleOutput[i];
+            expect(callArray[i].firstArg).equal(output);
+        }
+
+        sinonLog.restore();
+    });
+});

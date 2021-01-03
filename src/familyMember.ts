@@ -26,14 +26,19 @@ export class FamilyMember {
         spouse.spouse = this;
     }
 
-    addChild(childName: string, gender: string): void {
+    addChild(childName: string, gender: string): boolean {
+        let errorMessage: string = "CHILD_ADDITION_FAILED";
+
         if (!this.spouse || this.gender !== Gender.Female) {
-            throw new Error("only Mother could add child.");
+            console.log(errorMessage);
+            return false;
         }
 
         let child = new Child(this, childName, gender);
         this.child.push(child);
         this.spouse.child.push(child);
+
+        return true;
     }
 }
 
