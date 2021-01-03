@@ -13,7 +13,7 @@ export class FamilyTree {
         this.buildFamilyTree(filePath);
     }
 
-    addKingQueen(kingName: string, queenName: string): void {
+    addKingQueen(kingName: string, queenName: string): string {
         if (kingName.length <= 0 || queenName.length <= 0) {
             return;
         }
@@ -26,10 +26,10 @@ export class FamilyTree {
         this.king = king;
         this.queen = queen;
 
-        console.log("KING_QUEEN_ADDED");
+        return "KING_QUEEN_ADDED";
     }
 
-    addChild(motherName: string, childName: string, gender: string): void {
+    addChild(motherName: string, childName: string, gender: string): string {
         if (
             motherName.length <= 0 ||
             childName.length <= 0 ||
@@ -41,17 +41,17 @@ export class FamilyTree {
         let mother = this.findFamilyMember(motherName);
 
         if (!mother) {
-            return;
+            return "PERSON_NOT_FOUND";
         }
 
-        if (!mother.addChild(childName, gender)) {
-            return;
+        if (mother.addChild(childName, gender)) {
+            return "CHILD_ADDED";
+        } else {
+            return "CHILD_ADDITION_FAILED";
         }
-
-        console.log("CHILD_ADDED");
     }
 
-    addSpouse(name: string, spouseName: string, gender: string): void {
+    addSpouse(name: string, spouseName: string, gender: string): string {
         if (name.length <= 0 || spouseName.length <= 0) {
             return;
         }
@@ -60,15 +60,15 @@ export class FamilyTree {
         let member = this.findFamilyMember(name);
 
         if (!member) {
-            return;
+            return "PERSON_NOT_FOUND";
         }
 
         member.addSpouse(spouse);
 
-        console.log("SPOUSE_ADDED");
+        return "SPOUSE_ADDED";
     }
 
-    getRelationship(name: string, relationship: string): void {
+    getRelationship(name: string, relationship: string): string {
         if (name.length <= 0) {
             return;
         }
@@ -76,7 +76,7 @@ export class FamilyTree {
         let member = this.findFamilyMember(name);
 
         if (!member) {
-            return;
+            return "PERSON_NOT_FOUND";
         }
 
         let siblingSpouses: string[] = [];
@@ -123,7 +123,9 @@ export class FamilyTree {
         }
 
         if (result.length > 0) {
-            console.log(result.join(" "));
+            return result.join(" ");
+        } else {
+            return "NONE";
         }
     }
 
@@ -134,7 +136,6 @@ export class FamilyTree {
         let mother = member.mother;
         let siblings: string[] = [];
         let child: Child;
-        let errorMessage: string = "NONE";
 
         if (!mother) {
             return siblings;
@@ -152,10 +153,6 @@ export class FamilyTree {
             }
 
             siblings.push(child.name);
-        }
-
-        if (siblings.length === 0) {
-            console.log(errorMessage);
         }
 
         return siblings;
@@ -208,15 +205,11 @@ export class FamilyTree {
     }
 
     private findFamilyMember(name: string): FamilyMember | null {
-        let errorMessage: string = "PERSON_NOT_FOUND";
-
         if (name.length <= 0) {
-            console.log(errorMessage);
             return null;
         }
 
         if (this.king === null || this.queen === null) {
-            console.log(errorMessage);
             return null;
         }
 
@@ -244,7 +237,6 @@ export class FamilyTree {
             }
         }
 
-        console.log(errorMessage);
         return null;
     }
 

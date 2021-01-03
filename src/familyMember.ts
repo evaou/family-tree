@@ -29,10 +29,7 @@ export class FamilyMember {
     }
 
     addChild(childName: string, gender: string): boolean {
-        let errorMessage: string = "CHILD_ADDITION_FAILED";
-
         if (!this.spouse || this.gender !== Gender.Female) {
-            console.log(errorMessage);
             return false;
         }
 

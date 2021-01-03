@@ -27,6 +27,7 @@ export class App {
         let command: string;
         let action: string;
         let parameters: any[];
+        let result: string;
 
         for (let i = 0; i < this.commands.length; i++) {
             command = this.commands[i];
@@ -39,14 +40,19 @@ export class App {
 
             switch (action) {
                 case "ADD_CHILD":
-                    this.tree.addChild(
+                    result = this.tree.addChild(
                         parameters[0],
                         parameters[1],
                         parameters[2]
                     );
+                    console.log(result);
                     break;
                 case "GET_RELATIONSHIP":
-                    this.tree.getRelationship(parameters[0], parameters[1]);
+                    result = this.tree.getRelationship(
+                        parameters[0],
+                        parameters[1]
+                    );
+                    console.log(result);
                     break;
                 default:
                     break;
@@ -60,6 +66,5 @@ let args = process.argv.slice(2);
 let testFilePath = args[0];
 
 if (app.readFile(testFilePath)) {
-    console.log();
     app.runCommands();
 }
