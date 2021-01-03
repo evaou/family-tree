@@ -82,6 +82,9 @@ export class FamilyTree {
             case "Maternal-Uncle":
                 result = this.getSiblings(member.mother, Gender.Male);
                 break;
+            case "Paternal-Aunt":
+                result = this.getSiblings(member.father, Gender.Female);
+                break;
             case "Maternal-Aunt":
                 result = this.getSiblings(member.mother, Gender.Female);
                 break;

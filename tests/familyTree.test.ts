@@ -66,6 +66,14 @@ describe("familyTree relationship", function () {
         }
     });
 
+    it("paternal aunt", function () {
+        tree.getRelationship("Ron", "Paternal-Aunt");
+
+        if (!sinonLog.calledOnceWith("Lily")) {
+            throw new Error("Log was not called");
+        }
+    });
+
     it("maternal aunt", function () {
         tree.getRelationship("Remus", "Maternal-Aunt");
 
