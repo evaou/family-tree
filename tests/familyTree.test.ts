@@ -1,124 +1,71 @@
-import * as sinon from "sinon";
+import { expect } from "chai";
 import { FamilyTree } from "../src/familyTree";
 
 describe("familyTree add", function () {
     let tree = new FamilyTree();
-    let sinonLog;
-
-    beforeEach(() => {
-        sinonLog = sinon.spy(console, "log");
-    });
-
-    afterEach(() => {
-        sinonLog.restore();
-    });
 
     it("add king queen", function () {
-        tree.addKingQueen("Arthur", "Margret");
-
-        if (!sinonLog.calledOnceWith("KING_QUEEN_ADDED")) {
-            throw new Error("Log was not called");
-        }
+        const result = tree.addKingQueen("Arthur", "Margret");
+        expect(result).to.equal("KING_QUEEN_ADDED");
     });
 
     it("add child", function () {
-        tree.addChild("Margret", "Bill", "Male");
-
-        if (!sinonLog.calledOnceWith("CHILD_ADDED")) {
-            throw new Error("Log was not called");
-        }
+        const result = tree.addChild("Margret", "Bill", "Male");
+        expect(result).to.equal("CHILD_ADDED");
     });
 
     it("add spouse", function () {
-        tree.addSpouse("Bill", "Flora", "Female");
-
-        if (!sinonLog.calledOnceWith("SPOUSE_ADDED")) {
-            throw new Error("Log was not called");
-        }
+        const result = tree.addSpouse("Bill", "Flora", "Female");
+        expect(result).to.equal("SPOUSE_ADDED");
     });
 });
 
 describe("familyTree relationship", function () {
     let tree = new FamilyTree();
-    let sinonLog;
-
-    beforeEach(() => {
-        sinonLog = sinon.spy(console, "log");
-    });
-
-    afterEach(() => {
-        sinonLog.restore();
-    });
+    let result: string;
 
     it("paternal uncle", function () {
-        tree.getRelationship("Molly", "Paternal-Uncle");
-
-        if (!sinonLog.calledOnceWith("Bill Charlie Ronald")) {
-            throw new Error("Log was not called");
-        }
+        result = tree.getRelationship("Molly", "Paternal-Uncle");
+        expect(result).to.equal("Bill Charlie Ronald");
     });
 
     it("maternal uncle", function () {
-        tree.getRelationship("Lily", "Maternal-Uncle");
-
-        if (!sinonLog.calledOnceWith("Bill Charlie Percy Ronald")) {
-            throw new Error("Log was not called");
-        }
+        result = tree.getRelationship("Lily", "Maternal-Uncle");
+        expect(result).to.equal("Bill Charlie Percy Ronald");
     });
 
     it("paternal aunt", function () {
-        tree.getRelationship("Ron", "Paternal-Aunt");
-
-        if (!sinonLog.calledOnceWith("Lily")) {
-            throw new Error("Log was not called");
-        }
+        result = tree.getRelationship("Ron", "Paternal-Aunt");
+        expect(result).to.equal("Lily");
     });
 
     it("maternal aunt", function () {
-        tree.getRelationship("Remus", "Maternal-Aunt");
-
-        if (!sinonLog.calledOnceWith("Dominique")) {
-            throw new Error("Log was not called");
-        }
+        result = tree.getRelationship("Remus", "Maternal-Aunt");
+        expect(result).to.equal("Dominique");
     });
 
     it("sister in law", function () {
-        tree.getRelationship("Ronald", "Sister-In-Law");
-
-        if (!sinonLog.calledOnceWith("Flora Audrey")) {
-            throw new Error("Log was not called");
-        }
+        result = tree.getRelationship("Ronald", "Sister-In-Law");
+        expect(result).to.equal("Flora Audrey");
     });
 
     it("borther in law", function () {
-        tree.getRelationship("Helen", "Brother-In-Law");
-
-        if (!sinonLog.calledOnceWith("Bill Charlie Percy")) {
-            throw new Error("Log was not called");
-        }
+        result = tree.getRelationship("Helen", "Brother-In-Law");
+        expect(result).to.equal("Bill Charlie Percy");
     });
 
     it("son", function () {
-        tree.getRelationship("Harry", "Son");
-
-        if (!sinonLog.calledOnceWith("James Albus")) {
-            throw new Error("Log was not called");
-        }
+        result = tree.getRelationship("Harry", "Son");
+        expect(result).to.equal("James Albus");
     });
 
     it("daughter", function () {
-        tree.getRelationship("Rose", "Daughter");
-
-        if (!sinonLog.calledOnceWith("Aster")) {
-            throw new Error("Log was not called");
-        }
+        result = tree.getRelationship("Rose", "Daughter");
+        expect(result).to.equal("Aster");
     });
 
     it("siblings", function () {
-        tree.getRelationship("William", "Siblings");
-
-        if (!sinonLog.calledOnceWith("NONE")) {
-            throw new Error("Log was not called");
-        }
+        result = tree.getRelationship("William", "Siblings");
+        expect(result).to.equal("NONE");
     });
 });
