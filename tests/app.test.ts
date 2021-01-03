@@ -24,7 +24,7 @@ describe("shippit example", function () {
 
         let callArray = sinonLog.getCalls();
 
-        for (let i = 0; i < callArray.length; i++) {
+        for (let i = 0; i < exampleOutput.length; i++) {
             output = exampleOutput[i];
             expect(callArray[i].firstArg).equal(output);
         }
@@ -51,7 +51,7 @@ describe("shippit sample 1", function () {
 
         let callArray = sinonLog.getCalls();
 
-        for (let i = 0; i < callArray.length; i++) {
+        for (let i = 0; i < exampleOutput.length; i++) {
             output = exampleOutput[i];
             expect(callArray[i].firstArg).equal(output);
         }
@@ -78,7 +78,7 @@ describe("shippit sample 2", function () {
 
         let callArray = sinonLog.getCalls();
 
-        for (let i = 0; i < callArray.length; i++) {
+        for (let i = 0; i < exampleOutput.length; i++) {
             output = exampleOutput[i];
             expect(callArray[i].firstArg).equal(output);
         }
@@ -105,7 +105,7 @@ describe("shippit sample 3", function () {
 
         let callArray = sinonLog.getCalls();
 
-        for (let i = 0; i < callArray.length; i++) {
+        for (let i = 0; i < exampleOutput.length; i++) {
             output = exampleOutput[i];
             expect(callArray[i].firstArg).equal(output);
         }
