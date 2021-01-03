@@ -9,6 +9,10 @@ export class App {
     }
 
     readFile(filePath: string): boolean {
+        if (!fs.existsSync(filePath)) {
+            return false;
+        }
+
         let data: Buffer = fs.readFileSync(filePath);
         this.commands = data.toString().split("\n");
 
@@ -51,3 +55,11 @@ export class App {
     }
 }
 
+let app = new App();
+let args = process.argv.slice(2);
+let testFilePath = args[0];
+
+if (app.readFile(testFilePath)) {
+    console.log();
+    app.runCommands();
+}
