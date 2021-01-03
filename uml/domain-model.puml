@@ -2,22 +2,20 @@
 
 class FamilyMember {
     name: string
-    gender: string
+    gender: Gender
+    spouse: FamilyMember
+    child: Child[]
+    father: Father
+    mother: Mother
 }
 
 class Mother {
-    child: Child[]
-    spouse: Father
 }
 
 class Father {
-    child: Child[]
-    spouse: Mother
 }
 
 class Child {
-    father: Father
-    mother: Mother
 }
 
 FamilyMember <|-- Mother
