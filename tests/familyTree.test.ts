@@ -117,7 +117,7 @@ describe("familyTree relationship", function () {
     it("siblings", function () {
         tree.getRelationship("William", "Siblings");
 
-        if (!sinonLog.calledOnceWith("")) {
+        if (!sinonLog.calledOnceWith("NONE")) {
             throw new Error("Log was not called");
         }
     });
