@@ -99,6 +99,9 @@ export class FamilyTree {
                 siblingSpouses = this.getSiblingSpouse(member, Gender.Male);
                 result = result.concat(siblingSpouses);
                 break;
+            case "Son":
+                result = this.getChild(member, Gender.Male);
+                break;
             default:
                 break;
         }
@@ -152,6 +155,26 @@ export class FamilyTree {
 
         return spouses;
     }
+
+    private getChild(member: FamilyMember, childGender: Gender): string[] {
+        let result: string[] = [];
+
+        if (member.child.length === 0) {
+            return result;
+        }
+
+        let child: Child;
+
+        for (let i = 0; i < member.child.length; i++) {
+            child = member.child[i];
+            if (child.gender === childGender) {
+                result.push(child.name);
+            }
+        }
+
+        return result;
+    }
+
     private findFamilyMember(name: string): FamilyMember | null {
         if (name.length <= 0) {
             return null;

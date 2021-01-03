@@ -97,4 +97,13 @@ describe("familyTree relationship", function () {
             throw new Error("Log was not called");
         }
     });
+
+    it("son", function () {
+        tree.getRelationship("Harry", "Son");
+
+        if (!sinonLog.calledOnceWith("James Albus")) {
+            throw new Error("Log was not called");
+        }
+    });
+
 });
