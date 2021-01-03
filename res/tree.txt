@@ -13,7 +13,7 @@ ADD_SPOUSE Ginerva Harry Male
 ADD_CHILD Flora Victoire Female
 ADD_CHILD Flora Dominique Female
 ADD_CHILD Flora Louis Male
-ADD_CHILD Audrey Moily Female 
+ADD_CHILD Audrey Molly Female
 ADD_CHILD Audrey Lucy Female 
 ADD_CHILD Helen Rose Female 
 ADD_CHILD Helen Hugo Male 
