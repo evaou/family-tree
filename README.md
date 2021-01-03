@@ -16,6 +16,8 @@ npm run start \<test-file-path\>
     $ npm run coverage
 
 - test coverage report is at *./coverage/lcov-report/tests/index.html*
+
+![](res/test-coverage.png)
 ## Plan
 1. Domain-Driven Design (DDD)
     - Use case diagram
