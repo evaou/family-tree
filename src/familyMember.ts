@@ -5,7 +5,7 @@ export enum Gender {
 export class FamilyMember {
     name: string;
     gender: Gender;
-    spouse: FamilyMember | null;
+    spouse: FamilyMember;
     child: Child[];
     father: Father;
     mother: Mother;
@@ -21,6 +21,8 @@ export class FamilyMember {
 
         this.spouse = null;
         this.child = [];
+        this.father = null;
+        this.mother = null;
     }
 
     addSpouse(spouse: FamilyMember): void {
