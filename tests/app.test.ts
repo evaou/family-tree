@@ -1,8 +1,9 @@
 import { expect } from "chai";
 import * as sinon from "sinon";
-import app from "../src/app";
+import { App } from "../src/app";
 
 describe("shippit example", function () {
+    let app = new App();
     let filePath: string = "./tests/input/shippit-example.txt";
     let exampleOutput: string[] = [
         "CHILD_ADDED",
@@ -33,6 +34,7 @@ describe("shippit example", function () {
 });
 
 describe("shippit sample 1", function () {
+    let app = new App();
     let filePath: string = "./tests/input/shippit-sample-1.txt";
     let exampleOutput: string[] = ["PERSON_NOT_FOUND", "PERSON_NOT_FOUND"];
 
@@ -59,6 +61,7 @@ describe("shippit sample 1", function () {
 });
 
 describe("shippit sample 2", function () {
+    let app = new App();
     let filePath: string = "./tests/input/shippit-sample-2.txt";
     let exampleOutput: string[] = ["CHILD_ADDITION_FAILED", "NONE"];
 
@@ -85,6 +88,7 @@ describe("shippit sample 2", function () {
 });
 
 describe("shippit sample 3", function () {
+    let app = new App();
     let filePath: string = "./tests/input/shippit-sample-3.txt";
     let exampleOutput: string[] = ["Darcy Alice"];
 

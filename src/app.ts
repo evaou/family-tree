@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { FamilyTree } from "./familyTree";
-class App {
+export class App {
     private commands: string[];
     tree: FamilyTree = new FamilyTree();
 
@@ -51,4 +51,3 @@ class App {
     }
 }
 
-export default new App();
