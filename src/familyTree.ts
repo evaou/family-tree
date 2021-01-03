@@ -76,6 +76,12 @@ export class FamilyTree {
         let result: string[] = [];
 
         switch (relationship) {
+            case "Paternal-Uncle":
+                result = this.getSiblings(member.father, Gender.Male);
+                break;
+            case "Maternal-Uncle":
+                result = this.getSiblings(member.mother, Gender.Male);
+                break;
             case "Maternal-Aunt":
                 result = this.getSiblings(member.mother, Gender.Female);
                 break;
