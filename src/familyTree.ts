@@ -96,12 +96,16 @@ export class FamilyTree {
                 result = this.getSibling(member.mother, Gender.Female);
                 break;
             case "Sister-In-Law":
-                result = this.getSibling(member.spouse, Gender.Female);
+                if (member.spouse) {
+                    result = this.getSibling(member.spouse, Gender.Female);
+                }
                 siblingSpouses = this.getSiblingSpouse(member, Gender.Female);
                 result = result.concat(siblingSpouses);
                 break;
             case "Brother-In-Law":
-                result = this.getSibling(member.spouse, Gender.Male);
+                if (member.spouse) {
+                    result = this.getSibling(member.spouse, Gender.Male);
+                }
                 siblingSpouses = this.getSiblingSpouse(member, Gender.Male);
                 result = result.concat(siblingSpouses);
                 break;
