@@ -1,5 +1,7 @@
-import { Gender } from "./familyAttribute";
-
+export enum Gender {
+    Male,
+    Female,
+}
 export class FamilyMember {
     name: string;
     gender: Gender;
