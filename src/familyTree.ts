@@ -102,6 +102,9 @@ export class FamilyTree {
             case "Son":
                 result = this.getChild(member, Gender.Male);
                 break;
+            case "Daughter":
+                result = this.getChild(member, Gender.Female);
+                break;
             default:
                 break;
         }

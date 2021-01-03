@@ -106,4 +106,11 @@ describe("familyTree relationship", function () {
         }
     });
 
+    it("daughter", function () {
+        tree.getRelationship("Rose", "Daughter");
+
+        if (!sinonLog.calledOnceWith("Aster")) {
+            throw new Error("Log was not called");
+        }
+    });
 });
