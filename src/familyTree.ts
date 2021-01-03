@@ -105,6 +105,9 @@ export class FamilyTree {
             case "Daughter":
                 result = this.getChild(member, Gender.Female);
                 break;
+            case "Siblings":
+                result = this.getSibling(member);
+                break;
             default:
                 break;
         }
@@ -112,7 +115,10 @@ export class FamilyTree {
         console.log(result.join(" "));
     }
 
-    private getSibling(member: FamilyMember, siblingGender: Gender): string[] {
+    private getSibling(
+        member: FamilyMember,
+        siblingGender: Gender = -1
+    ): string[] {
         let mother = member.mother;
         let siblings: string[] = [];
         let child: Child;
@@ -124,9 +130,15 @@ export class FamilyTree {
         for (let i = 0; i < mother.child.length; i++) {
             child = mother.child[i];
 
-            if (child.gender === siblingGender && child.name !== member.name) {
-                siblings.push(child.name);
+            if (child.name === member.name) {
+                continue;
             }
+
+            if (siblingGender !== -1 && siblingGender !== child.gender) {
+                continue;
+            }
+
+            siblings.push(child.name);
         }
 
         return siblings;

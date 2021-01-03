@@ -113,4 +113,12 @@ describe("familyTree relationship", function () {
             throw new Error("Log was not called");
         }
     });
+
+    it("siblings", function () {
+        tree.getRelationship("William", "Siblings");
+
+        if (!sinonLog.calledOnceWith("")) {
+            throw new Error("Log was not called");
+        }
+    });
 });
