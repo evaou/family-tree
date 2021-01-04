@@ -1,6 +1,7 @@
 # Family Tree
 
 The app will by default load the Arthur family tree during initialization. All below commands are executable under project root folder.
+
 ## Docker Execution (Recommended)
 
 - Prepare docker image
@@ -17,9 +18,11 @@ The app will by default load the Arthur family tree during initialization. All b
 
     ```
     // run docker container and mount with host input directory
+    // e.g. docker run -v /Users/evaou/test:/app/shippit-input -itd db0efd8cdccc
     $ docker run -v <host-input-directory-absolute-path>:/app/shippit-input -itd <docker-image-id>
 
     // get docker container id
+    // e.g. docker ps | grep db0efd8cdccc | awk '{print $1}'
     $ docker ps | grep <docker-image-id> | awk '{print $1}'
     ```
 
@@ -37,7 +40,8 @@ The app will by default load the Arthur family tree during initialization. All b
     ```
     // Below file path needs to exist before execution
     // <host-input-directory-absolute-path>/<host-input-filename>
-    $ docker exec -it <new-docker-container-id> node dist/src/app ./shippit-input/<host-input-filename>
+    // e.g. docker exec -it f9dc586a078b node dist/src/app ./shippit-input/shippit-sample-4.txt 
+    $ docker exec -it <docker-container-id> node dist/src/app ./shippit-input/<host-input-filename>
     ```
 
 - Run test
@@ -54,6 +58,7 @@ The app will by default load the Arthur family tree during initialization. All b
 - Prepare build
 
     ```
+    $ npm install
     $ npm run build
     ```
 
@@ -69,6 +74,7 @@ The app will by default load the Arthur family tree during initialization. All b
 - Run program with host input file
 
     ```
+    // e.g. node dist/src/app /Users/evaou/test/shippit-sample-4.txt
     $ node dist/src/app <host-input-file-absolute-path>
     ```
 
