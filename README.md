@@ -22,10 +22,10 @@ The app will by default load the Arthur family tree during initialization. All b
 - Run program
 
     ```
-    $ docker exec -it <docker-container-id> npm run start ./tests/input/shippit-example.txt
-    $ docker exec -it <docker-container-id> npm run start ./tests/input/shippit-sample-1.txt
-    $ docker exec -it <docker-container-id> npm run start ./tests/input/shippit-sample-2.txt
-    $ docker exec -it <docker-container-id> npm run start ./tests/input/shippit-sample-3.txt
+    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/shippit-example.txt
+    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/shippit-sample-1.txt
+    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/shippit-sample-2.txt
+    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/shippit-sample-3.txt
     ```
 
 - Run test
@@ -40,6 +40,9 @@ The app will by default load the Arthur family tree during initialization. All b
 - Run program with host input file
 
     ```
+    // get docker image id
+    $ docker images | grep family-tree-app | awk '{print $3}'
+
     // run docker container mounted with host input directory
     $ docker run -v <host-input-directory-absolute-path>:/app/shippit-input -itd <docker-image-id>
 
@@ -48,7 +51,7 @@ The app will by default load the Arthur family tree during initialization. All b
 
     // Below file path needs to exist before execution
     // <host-input-directory-absolute-path>/<host-input-filename>
-    $ docker exec -it <new-docker-container-id> npm run start ./shippit-input/<host-input-filename>
+    $ docker exec -it <new-docker-container-id> node dist/src/app ./shippit-input/<host-input-filename>
     ```
 ## Local Execution
 
