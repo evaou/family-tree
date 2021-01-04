@@ -4,7 +4,8 @@
     "description": "family tree",
     "main": "dist/app.js",
     "scripts": {
-        "start": "tsc && node dist/src/app.js",
+        "build": "tsc",
+        "start": "node dist/src/app.js",
         "test": "mocha --require ts-node/register tests/**/*.test.ts",
         "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
     },
