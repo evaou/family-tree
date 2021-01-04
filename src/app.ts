@@ -67,4 +67,6 @@ let testFilePath = args[0];
 
 if (app.readFile(testFilePath)) {
     app.runCommands();
+} else {
+    console.log("Below file doesn't exist\n" + testFilePath);
 }
