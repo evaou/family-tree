@@ -15,7 +15,7 @@
     $ docker run -itd <docker-image-id>
 
     // get docker container id
-    $ docker ps | grep <docker-image-id>  | awk '{print $1}'
+    $ docker ps | grep <docker-image-id> | awk '{print $1}'
     ```
 
 - Run program
