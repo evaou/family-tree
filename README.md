@@ -1,6 +1,6 @@
 # Family Tree
 
-The app will by default load the Arthur family tree during initilization. All below commands are runnable under project root folder.
+The app will by default load the Arthur family tree during initialization. All below commands are executable under project root folder.
 ## Docker Execution (Recommended)
 
 - Prepare docker container
@@ -54,9 +54,6 @@ The app will by default load the Arthur family tree during initilization. All be
     $ npm run start ./tests/input/shippit-sample-1.txt
     $ npm run start ./tests/input/shippit-sample-2.txt
     $ npm run start ./tests/input/shippit-sample-3.txt
-
-    // test another input file
-    $ npm run start <test-file-path>
     ```
 
 - Run test
@@ -66,6 +63,12 @@ The app will by default load the Arthur family tree during initilization. All be
     $ npm run test -- -grep "shippit"
     $ npm run test -- -grep "familyTree"
     $ npm run coverage
+    ```
+
+- Run program with host input file
+
+    ```
+    $ npm run start <host-input-file-absolute-path>
     ```
 
 ## Plan
