@@ -10,4 +10,4 @@ COPY res/tree.txt res/tree.txt
 
 RUN npm install
 RUN mkdir shippit-input
-RUN npm build
+RUN npm run build
