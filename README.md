@@ -1,5 +1,6 @@
 # Family Tree
 
+The app will by default load the Arthur family tree during initilization. All below commands are runnable under project root folder.
 ## Docker Execution (Recommended)
 
 - Prepare docker container
@@ -34,6 +35,15 @@
     $ docker exec -it <docker-container-id> npm run test -- -grep "shippit"
     $ docker exec -it <docker-container-id> npm run test -- -grep "familyTree"
     $ docker exec -it <docker-container-id> npm run test coverage
+    ```
+
+- Run program with host input file
+
+    ```
+    // run docker container mounted with host input directory
+    $ docker run -v <host-input-directory-absolute-path>:/app/shippit-input -itd <docker-image-id>
+
+    $ docker exec -it <docker-container-id> npm run start ./shippit-input/<host-input-filename>
     ```
 ## Local Execution
 
