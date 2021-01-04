@@ -9,5 +9,4 @@ COPY tests /app/tests
 COPY res/tree.txt res/tree.txt
 
 RUN npm install
-
-#CMD ["node", "./dist/app.js"]
+RUN mkdir shippit-input
