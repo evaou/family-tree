@@ -43,7 +43,12 @@ The app will by default load the Arthur family tree during initialization. All b
     // run docker container mounted with host input directory
     $ docker run -v <host-input-directory-absolute-path>:/app/shippit-input -itd <docker-image-id>
 
-    $ docker exec -it <docker-container-id> npm run start ./shippit-input/<host-input-filename>
+    // get new docker container id
+    $ docker ps | grep <docker-image-id> | awk '{print $1}' | awk 'NR==1{print $1}'
+
+    // Below file path needs to exist before execution
+    // <host-input-directory-absolute-path>/<host-input-filename>
+    $ docker exec -it <new-docker-container-id> npm run start ./shippit-input/<host-input-filename>
     ```
 ## Local Execution
 
