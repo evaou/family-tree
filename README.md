@@ -3,7 +3,7 @@
 The app will by default load the Arthur family tree during initialization. All below commands are executable under project root folder.
 ## Docker Execution (Recommended)
 
-- Prepare docker container
+- Prepare docker image
 
     ```
     // build docker image
@@ -11,9 +11,13 @@ The app will by default load the Arthur family tree during initialization. All b
 
     // get docker image id
     $ docker images | grep family-tree-app | awk '{print $3}'
+    ```
 
-    // run docker container
-    $ docker run -itd <docker-image-id>
+- Prepare docker container
+
+    ```
+    // run docker container and mount with host input directory
+    $ docker run -v <host-input-directory-absolute-path>:/app/shippit-input -itd <docker-image-id>
 
     // get docker container id
     $ docker ps | grep <docker-image-id> | awk '{print $1}'
@@ -28,6 +32,14 @@ The app will by default load the Arthur family tree during initialization. All b
     $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/shippit-sample-3.txt
     ```
 
+- Run program with host input file
+
+    ```
+    // Below file path needs to exist before execution
+    // <host-input-directory-absolute-path>/<host-input-filename>
+    $ docker exec -it <new-docker-container-id> node dist/src/app ./shippit-input/<host-input-filename>
+    ```
+
 - Run test
 
     ```
@@ -37,31 +49,27 @@ The app will by default load the Arthur family tree during initialization. All b
     $ docker exec -it <docker-container-id> npm run test coverage
     ```
 
-- Run program with host input file
-
-    ```
-    // get docker image id
-    $ docker images | grep family-tree-app | awk '{print $3}'
-
-    // run docker container mounted with host input directory
-    $ docker run -v <host-input-directory-absolute-path>:/app/shippit-input -itd <docker-image-id>
-
-    // get new docker container id
-    $ docker ps | grep <docker-image-id> | awk '{print $1}' | awk 'NR==1{print $1}'
-
-    // Below file path needs to exist before execution
-    // <host-input-directory-absolute-path>/<host-input-filename>
-    $ docker exec -it <new-docker-container-id> node dist/src/app ./shippit-input/<host-input-filename>
-    ```
 ## Local Execution
+
+- Prepare build
+
+    ```
+    $ npm run build
+    ```
 
 - Run program
 
     ```
-    $ npm run start ./tests/input/shippit-example.txt
-    $ npm run start ./tests/input/shippit-sample-1.txt
-    $ npm run start ./tests/input/shippit-sample-2.txt
-    $ npm run start ./tests/input/shippit-sample-3.txt
+    $ node dist/src/app ./tests/input/shippit-example.txt
+    $ node dist/src/app ./tests/input/shippit-sample-1.txt
+    $ node dist/src/app ./tests/input/shippit-sample-2.txt
+    $ node dist/src/app ./tests/input/shippit-sample-3.txt
+    ```
+
+- Run program with host input file
+
+    ```
+    $ node dist/src/app <host-input-file-absolute-path>
     ```
 
 - Run test
@@ -71,12 +79,6 @@ The app will by default load the Arthur family tree during initialization. All b
     $ npm run test -- -grep "shippit"
     $ npm run test -- -grep "familyTree"
     $ npm run coverage
-    ```
-
-- Run program with host input file
-
-    ```
-    $ npm run start <host-input-file-absolute-path>
     ```
 
 ## Plan
