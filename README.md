@@ -42,6 +42,14 @@ The app will by default load the Arthur family tree during initialization. All b
     // <host-input-directory-absolute-path>/<host-input-filename>
     // e.g. docker exec -it f9dc586a078b node dist/src/app ./shippit-input/shippit-sample-4.txt 
     $ docker exec -it <docker-container-id> node dist/src/app ./shippit-input/<host-input-filename>
+
+    // Unhappy path will show below message
+    // e.g. docker exec -it 91a1444dc2b6 node dist/src/app /unhappy-path/Users/evaou/test/shippit-sample-4.txt
+    //  Below file doesn't exist
+    //  /unhappy-path/Users/evaou/test/shippit-sample-4.txt
+    // e.g. docker exec -it 91a1444dc2b6 node dist/src/app ./shippit-input/shippit-sample-5.txt
+    //  Below file doesn't exist under mounted host directory
+    //  shippit-sample-5.txt
     ```
 
 - Run test
@@ -76,6 +84,11 @@ The app will by default load the Arthur family tree during initialization. All b
     ```
     // e.g. node dist/src/app /Users/evaou/test/shippit-sample-4.txt
     $ node dist/src/app <host-input-file-absolute-path>
+
+    // Unhappy path will show below messages
+    // e.g. node dist/src/app /unhappy-path/Users/evaou/test/shippit-sample-4.txt
+    //   Below file doesn't exist
+    //   /unhappy-path/Users/evaou/test/shippit-sample-4.txt
     ```
 
 - Run test
