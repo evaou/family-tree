@@ -64,9 +64,18 @@ export class App {
 let app = new App();
 let args = process.argv.slice(2);
 let testFilePath = args[0];
+let regStr: RegExp = /^(\.\/)?shippit-input\//;
 
 if (app.readFile(testFilePath)) {
     app.runCommands();
 } else {
-    console.log("Below file doesn't exist\n" + testFilePath);
+    if (testFilePath.match(regStr)) {
+        testFilePath = testFilePath.replace(regStr, "");
+        console.log(
+            "Below file doesn't exist under mounted host directory\n" +
+                testFilePath
+        );
+    } else {
+        console.log("Below file doesn't exist\n" + testFilePath);
+    }
 }
