@@ -1,8 +1,10 @@
 import * as fs from "fs";
+import { CommandValidator } from "./commandValidator";
 import { FamilyTree } from "./familyTree";
 export class App {
     private commands: string[];
     tree: FamilyTree = new FamilyTree();
+    validator: CommandValidator = new CommandValidator();
 
     constructor() {
         this.commands = [];
@@ -33,6 +35,11 @@ export class App {
             command = this.commands[i];
             if (command.length === 0) {
                 continue;
+            }
+
+            if (!this.validator.isValidCommand(command)) {
+                console.log("Invalid command format\n" + command);
+                return;
             }
 
             action = command.split(" ")[0];
@@ -66,7 +73,8 @@ let args = process.argv.slice(2);
 let testFilePath = args[0];
 let regStr: RegExp = /^(\.\/)?shippit-input\//;
 
-if (app.readFile(testFilePath)) {
+if (args.length > 1) {
+} else if (app.readFile(testFilePath)) {
     app.runCommands();
 } else {
     if (testFilePath.match(regStr)) {

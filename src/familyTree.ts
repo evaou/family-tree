@@ -1,11 +1,13 @@
 import { FamilyMember, Father, Mother, Child, Gender } from "./familyMember";
 import * as fs from "fs";
+import { CommandValidator } from "./commandValidator";
 
 const filePath: string = "./res/tree.txt";
 
 export class FamilyTree {
     king: Father | null;
     queen: Mother | null;
+    validator: CommandValidator = new CommandValidator();
 
     constructor() {
         this.king = null;
@@ -251,6 +253,11 @@ export class FamilyTree {
             command = commands[i];
             if (command.length === 0) {
                 continue;
+            }
+
+            if (!this.validator.isValidCommand(command)) {
+                console.log("Invalid command format\n" + command);
+                return;
             }
 
             action = command.split(" ")[0];
