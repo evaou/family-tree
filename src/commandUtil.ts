@@ -1,3 +1,5 @@
+import { FamilyTree } from "./familyTree";
+
 export class CommandUtil {
     commandSet: { [key: string]: number };
 
@@ -23,5 +25,50 @@ export class CommandUtil {
         }
 
         return true;
+    }
+
+    execute(command: string, tree: FamilyTree): string {
+        let action: string;
+        let parameters: any[];
+        let result: string = "";
+
+        if (command.length === 0) {
+            return result;
+        }
+
+        if (!this.isValidCommand(command)) {
+            console.log("Invalid command format\n" + command);
+            return result;
+        }
+
+        action = command.split(" ")[0];
+        parameters = command.split(" ").slice(1);
+
+        switch (action) {
+            case "ADD_CHILD":
+                result = tree.addChild(
+                    parameters[0],
+                    parameters[1],
+                    parameters[2]
+                );
+                break;
+            case "GET_RELATIONSHIP":
+                result = tree.getRelationship(parameters[0], parameters[1]);
+                break;
+            case "ADD_KING_QUEEN":
+                result = tree.addKingQueen(parameters[0], parameters[1]);
+                break;
+            case "ADD_SPOUSE":
+                result = tree.addSpouse(
+                    parameters[0],
+                    parameters[1],
+                    parameters[2]
+                );
+                break;
+            default:
+                break;
+        }
+
+        return result;
     }
 }

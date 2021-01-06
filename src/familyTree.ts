@@ -245,37 +245,9 @@ export class FamilyTree {
     private buildFamilyTree(filePath: string): void {
         let data: Buffer = fs.readFileSync(filePath);
         let commands = data.toString().split("\n");
-        let command: string;
-        let action: string;
-        let parameters: any[];
 
         for (let i = 0; i < commands.length; i++) {
-            command = commands[i];
-            if (command.length === 0) {
-                continue;
-            }
-
-            if (!this.commandUtil.isValidCommand(command)) {
-                console.log("Invalid command format\n" + command);
-                return;
-            }
-
-            action = command.split(" ")[0];
-            parameters = command.split(" ").slice(1);
-
-            switch (action) {
-                case "ADD_KING_QUEEN":
-                    this.addKingQueen(parameters[0], parameters[1]);
-                    break;
-                case "ADD_CHILD":
-                    this.addChild(parameters[0], parameters[1], parameters[2]);
-                    break;
-                case "ADD_SPOUSE":
-                    this.addSpouse(parameters[0], parameters[1], parameters[2]);
-                    break;
-                default:
-                    break;
-            }
+            this.commandUtil.execute(commands[i], this);
         }
     }
 }

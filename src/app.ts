@@ -22,47 +22,12 @@ export class App {
     }
 
     runCommands(): void {
-        if (this.commands.length === 0) {
-            return;
-        }
-
-        let command: string;
-        let action: string;
-        let parameters: any[];
         let result: string;
 
         for (let i = 0; i < this.commands.length; i++) {
-            command = this.commands[i];
-            if (command.length === 0) {
-                continue;
-            }
-
-            if (!this.commandUtil.isValidCommand(command)) {
-                console.log("Invalid command format\n" + command);
-                return;
-            }
-
-            action = command.split(" ")[0];
-            parameters = command.split(" ").slice(1);
-
-            switch (action) {
-                case "ADD_CHILD":
-                    result = this.tree.addChild(
-                        parameters[0],
-                        parameters[1],
-                        parameters[2]
-                    );
-                    console.log(result);
-                    break;
-                case "GET_RELATIONSHIP":
-                    result = this.tree.getRelationship(
-                        parameters[0],
-                        parameters[1]
-                    );
-                    console.log(result);
-                    break;
-                default:
-                    break;
+            result = this.commandUtil.execute(this.commands[i], this.tree);
+            if (result.length > 0) {
+                console.log(result);
             }
         }
     }
