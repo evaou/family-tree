@@ -1,4 +1,4 @@
-export class CommandValidator {
+export class CommandUtil {
     commandSet: { [key: string]: number };
 
     constructor() {

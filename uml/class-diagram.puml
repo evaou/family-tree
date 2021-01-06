@@ -12,10 +12,13 @@ class App {
     +runCommands(): void
 }
 
-class CommandValidator {
+class CommandUil {
     +commandSet: {[string]: number}
     +isValidCommand(string): boolean
+    +execute(): string
 }
+
+
 
 class FamilyTree {
     +king: Father | null

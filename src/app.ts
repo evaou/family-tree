@@ -1,10 +1,10 @@
 import * as fs from "fs";
-import { CommandValidator } from "./commandValidator";
+import { CommandUtil } from "./commandUtil";
 import { FamilyTree } from "./familyTree";
 export class App {
     private commands: string[];
     tree: FamilyTree = new FamilyTree();
-    validator: CommandValidator = new CommandValidator();
+    commandUtil: CommandUtil = new CommandUtil();
 
     constructor() {
         this.commands = [];
@@ -37,7 +37,7 @@ export class App {
                 continue;
             }
 
-            if (!this.validator.isValidCommand(command)) {
+            if (!this.commandUtil.isValidCommand(command)) {
                 console.log("Invalid command format\n" + command);
                 return;
             }
