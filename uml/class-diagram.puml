@@ -65,7 +65,7 @@ class Child {
 }
 
 FamilyTree "1..*" o-- "*" FamilyMember
-FamilyTree o-- "*" FamilyTreeBuilder
+FamilyTree o-- FamilyTreeBuilder
 
 FamilyMember <|-- Father
 FamilyMember <|--  Mother
