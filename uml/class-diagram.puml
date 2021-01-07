@@ -18,16 +18,19 @@ class CommandUil {
     +readFile(string): string[]
 }
 
+class Relationship {
+    +find(tree, FamilyTree, name: string, relationship: string): string
+    -getSibling(member: FamilyMember, siblingGender: Gender): string[]
+    -getSiblingSpouse(member: FamilyMember, spouseGender: Gender): string[]
+    -getChild(member: FamilyMember, childGender: Gender): string[]
+}
+
 class FamilyTree {
     +king: Father | null
     +queen: Mother | null
     +addKingQueen(kingName: string, queenName: string): string 
     +addChild(montherName: string, childName: string, gender: string): string
     +addSpouse(name: string, spouseName: string, gender: string): string
-    +getRelationship(name: string, relationship: string): string
-    -getSibling(member: FamilyMember, siblingGender: Gender): string[]
-    -getSiblingSpouse(member: FamilyMember, spouseGender: Gender): string[]
-    -getChild(member: FamilyMember, childGender: Gender): string[]
     -findFamilyMember(name: string): FamilyMember | null
     -buildFamilyTree(filePath: string): void 
 }
