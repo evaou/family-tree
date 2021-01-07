@@ -1,4 +1,5 @@
 import { FamilyTree } from "./familyTree";
+import * as fs from "fs";
 
 export class CommandUtil {
     commandSet: { [key: string]: number };
@@ -70,5 +71,18 @@ export class CommandUtil {
         }
 
         return result;
+    }
+
+    readFile(filePath: string): string[] {
+        let commands: string[] = [];
+
+        if (!fs.existsSync(filePath)) {
+            return commands;
+        }
+
+        let data: Buffer = fs.readFileSync(filePath);
+        commands = data.toString().split("\n");
+
+        return commands;
     }
 }
