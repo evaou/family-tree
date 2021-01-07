@@ -26,11 +26,11 @@ export class FamilyTreeBuilder {
         return this._tree;
     }
 
-    get king() {
+    get king(): Father | null {
         return this._king;
     }
 
-    get queen() {
+    get queen(): Mother | null {
         return this._queen;
     }
 }
