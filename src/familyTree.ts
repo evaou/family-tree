@@ -243,8 +243,7 @@ export class FamilyTree {
     }
 
     private buildFamilyTree(filePath: string): void {
-        let data: Buffer = fs.readFileSync(filePath);
-        let commands = data.toString().split("\n");
+        let commands = this.commandUtil.readFile(filePath);
 
         for (let i = 0; i < commands.length; i++) {
             this.commandUtil.execute(commands[i], this);
