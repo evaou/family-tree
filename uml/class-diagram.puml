@@ -7,18 +7,16 @@ enum Gender {
 
 class App {
     +tree: FamilyTree
-    -commands: string[]
-    +readFile(filePath: string): boolean
+    +commandUtil: CommandUtil
     +runCommands(): void
 }
 
 class CommandUil {
     +commandSet: {[string]: number}
     +isValidCommand(string): boolean
-    +execute(): string
+    +execute(string, FamilyTree): string
+    +readFile(string): string[]
 }
-
-
 
 class FamilyTree {
     +king: Father | null
