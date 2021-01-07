@@ -1,5 +1,4 @@
 import { FamilyMember, Father, Mother, Child, Gender } from "./familyMember";
-import * as fs from "fs";
 import { CommandUtil } from "./commandUtil";
 
 const filePath: string = "./res/tree.txt";
