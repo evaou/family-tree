@@ -1,8 +1,8 @@
 import { expect } from "chai";
-import { FamilyTree } from "../src/familyTree";
+import { FamilyTreeBuilder } from "../src/familyTreeBuilder";
 
 describe("familyTree add", function () {
-    let tree = new FamilyTree();
+    let tree = new FamilyTreeBuilder().build();
 
     it("add king queen", function () {
         const result = tree.addKingQueen("Arthur", "Margret");

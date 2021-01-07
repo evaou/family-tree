@@ -1,7 +1,8 @@
 import { CommandUtil } from "./commandUtil";
 import { FamilyTree } from "./familyTree";
+import { FamilyTreeBuilder } from "./familyTreeBuilder";
 export class App {
-    tree: FamilyTree = new FamilyTree();
+    tree: FamilyTree = new FamilyTreeBuilder().build();
     commandUtil: CommandUtil = new CommandUtil();
 
     constructor() {}

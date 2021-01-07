@@ -1,17 +1,13 @@
 import { FamilyMember, Father, Mother, Gender } from "./familyMember";
-import { CommandUtil } from "./commandUtil";
-
-const filePath: string = "./res/tree.txt";
+import { FamilyTreeBuilder } from "./familyTreeBuilder";
 
 export class FamilyTree {
     king: Father | null;
     queen: Mother | null;
-    commandUtil: CommandUtil = new CommandUtil();
 
-    constructor() {
-        this.king = null;
-        this.queen = null;
-        this.buildFamilyTree(filePath);
+    constructor(familyTreeBuilder: FamilyTreeBuilder) {
+        this.king = familyTreeBuilder.king;
+        this.queen = familyTreeBuilder.queen;
     }
 
     addKingQueen(kingName: string, queenName: string): string {
@@ -103,13 +99,5 @@ export class FamilyTree {
         }
 
         return null;
-    }
-
-    private buildFamilyTree(filePath: string): void {
-        let commands = this.commandUtil.readFile(filePath);
-
-        for (let i = 0; i < commands.length; i++) {
-            this.commandUtil.execute(commands[i], this);
-        }
     }
 }
