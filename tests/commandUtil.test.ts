@@ -33,7 +33,7 @@ describe("invalid command", function () {
     });
 });
 
-describe("read file", function () {
+describe("read command file", function () {
     it("file exists", function () {
         let commandUtil = new CommandUtil();
         let filePath: string = "./tests/input/shippit-example.txt";

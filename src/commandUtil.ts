@@ -1,4 +1,5 @@
 import { FamilyTree } from "./familyTree";
+import { Relationship } from "./relationship";
 import * as fs from "fs";
 
 export class CommandUtil {
@@ -32,6 +33,7 @@ export class CommandUtil {
         let action: string;
         let parameters: any[];
         let result: string = "";
+        let relationship: Relationship = new Relationship();
 
         if (command.length === 0) {
             return result;
@@ -54,7 +56,7 @@ export class CommandUtil {
                 );
                 break;
             case "GET_RELATIONSHIP":
-                result = tree.getRelationship(parameters[0], parameters[1]);
+                result = relationship.find(tree, parameters[0], parameters[1]);
                 break;
             case "ADD_KING_QUEEN":
                 result = tree.addKingQueen(parameters[0], parameters[1]);
