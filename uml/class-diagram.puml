@@ -25,6 +25,16 @@ class Relationship {
     -getChild(member: FamilyMember, childGender: Gender): string[]
 }
 
+class FamilyTreeBuilder {
+    -_king: Father | null
+    -_queen: Mother | null
+    -_tree: FamilyTree
+    -_filePath: string
+    +build(): FamilyTree
+    +king(): Father | null 
+    +queen(): Mother | null
+}
+
 class FamilyTree {
     +king: Father | null
     +queen: Mother | null
@@ -32,7 +42,6 @@ class FamilyTree {
     +addChild(montherName: string, childName: string, gender: string): string
     +addSpouse(name: string, spouseName: string, gender: string): string
     -findFamilyMember(name: string): FamilyMember | null
-    -buildFamilyTree(filePath: string): void 
 }
 
 class FamilyMember {
@@ -56,6 +65,7 @@ class Child {
 }
 
 FamilyTree "1..*" o-- "*" FamilyMember
+FamilyTree o-- "*" FamilyTreeBuilder
 
 FamilyMember <|-- Father
 FamilyMember <|--  Mother
