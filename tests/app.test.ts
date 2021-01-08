@@ -2,9 +2,9 @@ import { expect } from "chai";
 import * as sinon from "sinon";
 import { App } from "../src/app";
 
-describe("shippit example", function () {
+describe("example", function () {
     let app = new App();
-    let filePath: string = "./tests/input/shippit-example.txt";
+    let filePath: string = "./tests/input/example.txt";
     let commands = app.commandUtil.readFile(filePath);
     let exampleOutput: string[] = [
         "CHILD_ADDED",
@@ -29,9 +29,9 @@ describe("shippit example", function () {
     });
 });
 
-describe("shippit sample 1", function () {
+describe("sample 1", function () {
     let app = new App();
-    let filePath: string = "./tests/input/shippit-sample-1.txt";
+    let filePath: string = "./tests/input/sample-1.txt";
     let commands = app.commandUtil.readFile(filePath);
     let exampleOutput: string[] = ["PERSON_NOT_FOUND", "PERSON_NOT_FOUND"];
 
@@ -52,9 +52,9 @@ describe("shippit sample 1", function () {
     });
 });
 
-describe("shippit sample 2", function () {
+describe("sample 2", function () {
     let app = new App();
-    let filePath: string = "./tests/input/shippit-sample-2.txt";
+    let filePath: string = "./tests/input/sample-2.txt";
     let commands = app.commandUtil.readFile(filePath);
     let exampleOutput: string[] = ["CHILD_ADDITION_FAILED", "NONE"];
 
@@ -75,9 +75,9 @@ describe("shippit sample 2", function () {
     });
 });
 
-describe("shippit sample 3", function () {
+describe("sample 3", function () {
     let app = new App();
-    let filePath: string = "./tests/input/shippit-sample-3.txt";
+    let filePath: string = "./tests/input/sample-3.txt";
     let commands = app.commandUtil.readFile(filePath);
     let exampleOutput: string[] = ["Darcy Alice"];
 

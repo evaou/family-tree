@@ -36,7 +36,7 @@ describe("invalid command", function () {
 describe("read command file", function () {
     it("file exists", function () {
         let commandUtil = new CommandUtil();
-        let filePath: string = "./tests/input/shippit-example.txt";
+        let filePath: string = "./tests/input/example.txt";
 
         const result = commandUtil.readFile(filePath);
         expect(result.length).greaterThan(0);
@@ -44,7 +44,7 @@ describe("read command file", function () {
 
     it("file doesn't exist", function () {
         let commandUtil = new CommandUtil();
-        let filePath: string = "./tests/input/shippit-sample-5.txt";
+        let filePath: string = "./tests/input/sample-5.txt";
 
         const result = commandUtil.readFile(filePath);
         expect(result.length).equal(0);
