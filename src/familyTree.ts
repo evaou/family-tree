@@ -1,4 +1,4 @@
-import { FamilyMember, Father, Mother, Gender } from "./familyMember";
+import { FamilyMember, Father, Mother} from "./familyMember";
 import { FamilyTreeBuilder } from "./familyTreeBuilder";
 
 export class FamilyTree {
