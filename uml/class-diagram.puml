@@ -38,6 +38,7 @@ class FamilyTreeBuilder {
 class FamilyTree {
     +king: Father | null
     +queen: Mother | null
+    -hashMembers: { [key: string]: FamilyMember }
     +addKingQueen(kingName: string, queenName: string): string 
     +addChild(montherName: string, childName: string, gender: string): string
     +addSpouse(name: string, spouseName: string, gender: string): string
@@ -52,7 +53,7 @@ class FamilyMember {
     +father: Father
     +mother: Mother
     +addSpouse(spouse: FamilyMember): void
-    +addChild(childName: string, genter: string): boolean
+    +addChild(childName: string, genter: string): FamilyMember | null
 }
 
 class Father {
