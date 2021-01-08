@@ -18,8 +18,8 @@ The app will by default load the Arthur family tree during initialization. All b
 
     ```
     // run docker container and mount with host input directory
-    // e.g. docker run -v /Users/evaou/test:/app/shippit-input -itd db0efd8cdccc
-    $ docker run -v <host-input-directory-absolute-path>:/app/shippit-input -itd <docker-image-id>
+    // e.g. docker run -v /Users/evaou/test:/app/input -itd db0efd8cdccc
+    $ docker run -v <host-input-directory-absolute-path>:/app/input -itd <docker-image-id>
 
     // get docker container id
     // e.g. docker ps | grep db0efd8cdccc | awk '{print $1}'
@@ -29,10 +29,10 @@ The app will by default load the Arthur family tree during initialization. All b
 - Run program
 
     ```
-    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/shippit-example.txt
-    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/shippit-sample-1.txt
-    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/shippit-sample-2.txt
-    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/shippit-sample-3.txt
+    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/example.txt
+    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/sample-1.txt
+    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/sample-2.txt
+    $ docker exec -it <docker-container-id> node dist/src/app ./tests/input/sample-3.txt
     ```
 
 - Run program with host input file
@@ -40,23 +40,22 @@ The app will by default load the Arthur family tree during initialization. All b
     ```
     // Below file path needs to exist before execution
     // <host-input-directory-absolute-path>/<host-input-filename>
-    // e.g. docker exec -it f9dc586a078b node dist/src/app ./shippit-input/shippit-sample-4.txt 
-    $ docker exec -it <docker-container-id> node dist/src/app ./shippit-input/<host-input-filename>
+    // e.g. docker exec -it f9dc586a078b node dist/src/app ./input/sample-4.txt
+    $ docker exec -it <docker-container-id> node dist/src/app ./input/<host-input-filename>
 
     // Unhappy path will show below message
-    // e.g. docker exec -it 91a1444dc2b6 node dist/src/app /unhappy-path/Users/evaou/test/shippit-sample-4.txt
+    // e.g. docker exec -it 91a1444dc2b6 node dist/src/app /unhappy-path/Users/evaou/test/sample-4.txt
     //  Below file doesn't exist
-    //  /unhappy-path/Users/evaou/test/shippit-sample-4.txt
-    // e.g. docker exec -it 91a1444dc2b6 node dist/src/app ./shippit-input/shippit-sample-5.txt
+    //  /unhappy-path/Users/evaou/test/sample-4.txt
+    // e.g. docker exec -it 91a1444dc2b6 node dist/src/app ./input/sample-5.txt
     //  Below file doesn't exist under mounted host directory
-    //  shippit-sample-5.txt
+    //  sample-5.txt
     ```
 
 - Run test
 
     ```
     $ docker exec -it <docker-container-id> npm run test
-    $ docker exec -it <docker-container-id> npm run test -- -grep "shippit"
     $ docker exec -it <docker-container-id> npm run test -- -grep "familyTree"
     $ docker exec -it <docker-container-id> npm run test coverage
     ```
@@ -73,29 +72,28 @@ The app will by default load the Arthur family tree during initialization. All b
 - Run program
 
     ```
-    $ node dist/src/app ./tests/input/shippit-example.txt
-    $ node dist/src/app ./tests/input/shippit-sample-1.txt
-    $ node dist/src/app ./tests/input/shippit-sample-2.txt
-    $ node dist/src/app ./tests/input/shippit-sample-3.txt
+    $ node dist/src/app ./tests/input/example.txt
+    $ node dist/src/app ./tests/input/sample-1.txt
+    $ node dist/src/app ./tests/input/sample-2.txt
+    $ node dist/src/app ./tests/input/sample-3.txt
     ```
 
 - Run program with host input file
 
     ```
-    // e.g. node dist/src/app /Users/evaou/test/shippit-sample-4.txt
+    // e.g. node dist/src/app /Users/evaou/test/sample-4.txt
     $ node dist/src/app <host-input-file-absolute-path>
 
     // Unhappy path will show below messages
-    // e.g. node dist/src/app /unhappy-path/Users/evaou/test/shippit-sample-4.txt
+    // e.g. node dist/src/app /unhappy-path/Users/evaou/test/sample-4.txt
     //   Below file doesn't exist
-    //   /unhappy-path/Users/evaou/test/shippit-sample-4.txt
+    //   /unhappy-path/Users/evaou/test/sample-4.txt
     ```
 
 - Run test
 
     ```
     $ npm run test
-    $ npm run test -- -grep "shippit"
     $ npm run test -- -grep "familyTree"
     $ npm run coverage
     ```

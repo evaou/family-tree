@@ -9,5 +9,5 @@ COPY tests /app/tests
 COPY res/tree.txt res/tree.txt
 
 RUN npm install
-RUN mkdir shippit-input
+RUN mkdir input
 RUN npm run build

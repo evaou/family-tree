@@ -22,7 +22,7 @@ export class App {
 let app = new App();
 let args = process.argv.slice(2);
 let testFilePath = args[0];
-let regStr: RegExp = /^(\.\/)?shippit-input\//;
+let regStr: RegExp = /^(\.\/)?input\//;
 let commands: string[] = [];
 
 if (args.length === 1) {
