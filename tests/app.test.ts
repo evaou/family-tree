@@ -7,7 +7,7 @@ describe("example", function () {
     let filePath: string = "./tests/input/example.txt";
     let commands = app.commandUtil.readFile(filePath);
     let exampleOutput: string[] = [
-        "CHILD_ADDED",
+        "CHILD_ADDITION_SUCCEEDED",
         "Dominique Minerva",
         "Victoire Dominique Louis",
     ];

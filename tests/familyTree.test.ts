@@ -11,7 +11,7 @@ describe("familyTree add", function () {
 
     it("add child", function () {
         const result = tree.addChild("Margret", "Bill", "Male");
-        expect(result).to.equal("CHILD_ADDED");
+        expect(result).to.equal("CHILD_ADDITION_SUCCEEDED");
     });
 
     it("add spouse", function () {

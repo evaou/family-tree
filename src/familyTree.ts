@@ -49,7 +49,7 @@ export class FamilyTree {
 
         if (child) {
             this.hashMembers[child.name] = child;
-            return "CHILD_ADDED";
+            return "CHILD_ADDITION_SUCCEEDED";
         } else {
             return "CHILD_ADDITION_FAILED";
         }
