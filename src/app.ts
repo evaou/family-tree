@@ -2,10 +2,16 @@ import { CommandUtil } from "./commandUtil";
 import { FamilyTree } from "./familyTree";
 import { FamilyTreeBuilder } from "./familyTreeBuilder";
 export class App {
-    tree: FamilyTree = new FamilyTreeBuilder().build();
+    tree: FamilyTree;
     commandUtil: CommandUtil = new CommandUtil();
 
-    constructor() {}
+    constructor(treeFilePath?: string) {
+        if (treeFilePath) {
+            this.tree = new FamilyTreeBuilder(treeFilePath).build();
+        } else {
+            this.tree = new FamilyTreeBuilder().build();
+        }
+    }
 
     runCommands(commands: string[]): void {
         let result: string;
