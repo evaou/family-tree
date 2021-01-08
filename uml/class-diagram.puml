@@ -26,23 +26,23 @@ class Relationship {
 }
 
 class FamilyTreeBuilder {
-    -_king: Father | null
-    -_queen: Mother | null
+    -_king: FamilyMember
+    -_queen: FamilyMember
     -_tree: FamilyTree
     -_filePath: string
     +build(): FamilyTree
-    +king(): Father | null 
-    +queen(): Mother | null
+    +get king(): FamilyMember
+    +get queen(): FamilyMember
 }
 
 class FamilyTree {
-    +king: Father | null
-    +queen: Mother | null
+    +king: FamilyMember
+    +queen: FamilyMember
     -hashMembers: { [key: string]: FamilyMember }
     +addKingQueen(kingName: string, queenName: string): string 
     +addChild(montherName: string, childName: string, gender: string): string
     +addSpouse(name: string, spouseName: string, gender: string): string
-    -findFamilyMember(name: string): FamilyMember | null
+    -findFamilyMember(name: string): FamilyMember
 }
 
 class FamilyMember {
@@ -50,26 +50,13 @@ class FamilyMember {
     +gender: Gender
     +spouse: FamilyMember
     +child: Child[]
-    +father: Father
-    +mother: Mother
+    +father: FamilyMember 
+    +mother: FamilyMember 
     +addSpouse(spouse: FamilyMember): void
-    +addChild(childName: string, genter: string): FamilyMember | null
-}
-
-class Father {
-}
-
-class Mother {
-}
-
-class Child {
+    +addChild(childName: string, genter: string): FamilyMember
 }
 
 FamilyTree "1..*" o-- "*" FamilyMember
 FamilyTree o-- FamilyTreeBuilder
-
-FamilyMember <|-- Father
-FamilyMember <|--  Mother
-FamilyMember <|--  Child
 
 @enduml
