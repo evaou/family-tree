@@ -6,9 +6,9 @@ export class FamilyMember {
     name: string;
     gender: Gender;
     spouse: FamilyMember;
-    child: Child[];
-    father: Father;
-    mother: Mother;
+    child: FamilyMember[];
+    father: FamilyMember;
+    mother: FamilyMember;
 
     constructor(name: string, gender: string) {
         this.name = name;
@@ -35,30 +35,13 @@ export class FamilyMember {
             return null;
         }
 
-        let child = new Child(this, childName, gender);
+        let child = new FamilyMember(childName, gender);
+        child.mother = this;
+        child.father = child.mother.spouse;
+
         this.child.push(child);
         this.spouse.child.push(child);
 
         return child;
-    }
-}
-
-export class Father extends FamilyMember {
-    constructor(name: string) {
-        super(name, "Male");
-    }
-}
-
-export class Mother extends FamilyMember {
-    constructor(name: string) {
-        super(name, "Female");
-    }
-}
-
-export class Child extends FamilyMember {
-    constructor(mother: Mother, childName: string, gender: string) {
-        super(childName, gender);
-        this.mother = mother;
-        this.father = this.mother.spouse;
     }
 }

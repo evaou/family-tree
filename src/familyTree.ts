@@ -1,9 +1,9 @@
-import { FamilyMember, Father, Mother} from "./familyMember";
+import { FamilyMember } from "./familyMember";
 import { FamilyTreeBuilder } from "./familyTreeBuilder";
 
 export class FamilyTree {
-    king: Father | null;
-    queen: Mother | null;
+    king: FamilyMember | null;
+    queen: FamilyMember | null;
     private hashMembers: { [key: string]: FamilyMember } = {};
 
     constructor(familyTreeBuilder: FamilyTreeBuilder) {
@@ -16,10 +16,10 @@ export class FamilyTree {
             return;
         }
 
-        let king = new Father(kingName);
+        let king = new FamilyMember(kingName, "Male");
         this.hashMembers[king.name] = king;
 
-        let queen = new Mother(queenName);
+        let queen = new FamilyMember(queenName, "Female");
         this.hashMembers[queen.name] = queen;
 
         king.addSpouse(queen);

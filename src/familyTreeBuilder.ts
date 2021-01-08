@@ -1,13 +1,13 @@
-import { Father, Mother } from "./familyMember";
+import { FamilyMember } from "./familyMember";
 import { CommandUtil } from "./commandUtil";
 import { FamilyTree } from "./familyTree";
 
 const treeFilePath: string = "./res/tree.txt";
-const commandUtil = new CommandUtil(); 
+const commandUtil = new CommandUtil();
 
 export class FamilyTreeBuilder {
-    private _king: Father | null;
-    private _queen: Mother | null;
+    private _king: FamilyMember | null;
+    private _queen: FamilyMember | null;
     private _tree: FamilyTree;
     private _filePath: string;
 
@@ -26,11 +26,11 @@ export class FamilyTreeBuilder {
         return this._tree;
     }
 
-    get king(): Father | null {
+    get king(): FamilyMember | null {
         return this._king;
     }
 
-    get queen(): Mother | null {
+    get queen(): FamilyMember | null {
         return this._queen;
     }
 }

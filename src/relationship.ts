@@ -1,5 +1,5 @@
-import { FamilyTree } from "./familyTree"
-import { FamilyMember, Child, Gender } from "./familyMember"
+import { FamilyTree } from "./familyTree";
+import { FamilyMember, Gender } from "./familyMember";
 
 export class Relationship {
     construct() {}
@@ -71,7 +71,7 @@ export class Relationship {
     ): string[] {
         let mother = member.mother;
         let siblings: string[] = [];
-        let child: Child;
+        let child: FamilyMember;
 
         if (!mother) {
             return siblings;
@@ -100,7 +100,7 @@ export class Relationship {
     ): string[] {
         let mother = member.mother;
         let spouses: string[] = [];
-        let child: Child;
+        let child: FamilyMember;
 
         if (!mother) {
             return spouses;
@@ -128,7 +128,7 @@ export class Relationship {
             return result;
         }
 
-        let child: Child;
+        let child: FamilyMember;
 
         for (let i = 0; i < member.child.length; i++) {
             child = member.child[i];
