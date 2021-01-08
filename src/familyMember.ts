@@ -30,16 +30,16 @@ export class FamilyMember {
         spouse.spouse = this;
     }
 
-    addChild(childName: string, gender: string): boolean {
+    addChild(childName: string, gender: string): FamilyMember | null {
         if (!this.spouse || this.gender !== Gender.Female) {
-            return false;
+            return null;
         }
 
         let child = new Child(this, childName, gender);
         this.child.push(child);
         this.spouse.child.push(child);
 
-        return true;
+        return child;
     }
 }
 

@@ -4,6 +4,7 @@ import { FamilyTreeBuilder } from "./familyTreeBuilder";
 export class FamilyTree {
     king: Father | null;
     queen: Mother | null;
+    private hashMembers: { [key: string]: FamilyMember } = {};
 
     constructor(familyTreeBuilder: FamilyTreeBuilder) {
         this.king = familyTreeBuilder.king;
@@ -16,7 +17,10 @@ export class FamilyTree {
         }
 
         let king = new Father(kingName);
+        this.hashMembers[king.name] = king;
+
         let queen = new Mother(queenName);
+        this.hashMembers[queen.name] = queen;
 
         king.addSpouse(queen);
 
@@ -41,7 +45,10 @@ export class FamilyTree {
             return "PERSON_NOT_FOUND";
         }
 
-        if (mother.addChild(childName, gender)) {
+        let child = mother.addChild(childName, gender);
+
+        if (child) {
+            this.hashMembers[child.name] = child;
             return "CHILD_ADDED";
         } else {
             return "CHILD_ADDITION_FAILED";
@@ -54,6 +61,8 @@ export class FamilyTree {
         }
 
         let spouse = new FamilyMember(spouseName, gender);
+        this.hashMembers[spouse.name] = spouse;
+
         let member = this.findFamilyMember(name);
 
         if (!member) {
@@ -70,34 +79,10 @@ export class FamilyTree {
             return null;
         }
 
-        if (this.king === null || this.queen === null) {
+        if (name in this.hashMembers) {
+            return this.hashMembers[name];
+        } else {
             return null;
         }
-
-        let queue: FamilyMember[] = [this.king, this.queen];
-        let currentMember: FamilyMember;
-
-        while (queue.length > 0) {
-            currentMember = queue.shift();
-
-            if (name === currentMember.name) {
-                return currentMember;
-            }
-
-            if (
-                currentMember.gender === Gender.Female &&
-                currentMember.child.length > 0
-            ) {
-                for (let i = 0; i < currentMember.child.length; i++) {
-                    let child = currentMember.child[i];
-                    queue.push(child);
-                    if (child.spouse) {
-                        queue.push(child.spouse);
-                    }
-                }
-            }
-        }
-
-        return null;
     }
 }
