@@ -2,8 +2,8 @@ import { FamilyMember } from "./familyMember";
 import { FamilyTreeBuilder } from "./familyTreeBuilder";
 
 export class FamilyTree {
-    king: FamilyMember | null;
-    queen: FamilyMember | null;
+    king: FamilyMember;
+    queen: FamilyMember;
     private hashMembers: { [key: string]: FamilyMember } = {};
 
     constructor(familyTreeBuilder: FamilyTreeBuilder) {
@@ -74,7 +74,7 @@ export class FamilyTree {
         return "SPOUSE_ADDED";
     }
 
-    findFamilyMember(name: string): FamilyMember | null {
+    findFamilyMember(name: string): FamilyMember {
         if (name.length <= 0) {
             return null;
         }

@@ -30,7 +30,7 @@ export class FamilyMember {
         spouse.spouse = this;
     }
 
-    addChild(childName: string, gender: string): FamilyMember | null {
+    addChild(childName: string, gender: string): FamilyMember {
         if (!this.spouse || this.gender !== Gender.Female) {
             return null;
         }

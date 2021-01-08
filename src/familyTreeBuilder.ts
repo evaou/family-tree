@@ -6,8 +6,8 @@ const treeFilePath: string = "./res/tree.txt";
 const commandUtil = new CommandUtil();
 
 export class FamilyTreeBuilder {
-    private _king: FamilyMember | null;
-    private _queen: FamilyMember | null;
+    private _king: FamilyMember;
+    private _queen: FamilyMember;
     private _tree: FamilyTree;
     private _filePath: string;
 
@@ -26,11 +26,11 @@ export class FamilyTreeBuilder {
         return this._tree;
     }
 
-    get king(): FamilyMember | null {
+    get king(): FamilyMember {
         return this._king;
     }
 
-    get queen(): FamilyMember | null {
+    get queen(): FamilyMember {
         return this._queen;
     }
 }
