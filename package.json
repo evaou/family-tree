@@ -2,7 +2,7 @@
     "name": "family-tree",
     "version": "1.0.0",
     "description": "family tree",
-    "main": "dist/app.js",
+    "main": "dist/src/app.js",
     "scripts": {
         "build": "tsc",
         "start": "tsc && node dist/src/geektrust.js",
