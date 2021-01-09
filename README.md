@@ -110,10 +110,6 @@ The app will by default load the Arthur family tree during initialization. All b
 
 ![](res/use-case-diagram.png)
 
-- Domain model
-
-![](res/domain-model.png)
-
 - Class diagram
 
 ![](res/class-diagram.png)
