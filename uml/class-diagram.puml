@@ -8,18 +8,18 @@ enum Gender {
 class App {
     +tree: FamilyTree
     +commandUtil: CommandUtil
-    +runCommands(): void
+    +runCommands(commands: string[]): void
 }
 
 class CommandUil {
-    +commandSet: {[string]: number}
-    +isValidCommand(string): boolean
-    +execute(string, FamilyTree): string
-    +readFile(string): string[]
+    +commandSet: {[key: string]: number}
+    +isValidCommand(command: string): boolean
+    +execute(command: string, tree: FamilyTree): string
+    +readFile(filePath: string): string[]
 }
 
 class Relationship {
-    +find(tree, FamilyTree, name: string, relationship: string): string
+    +find(tree: FamilyTree, name: string, relationship: string): string
     -getSibling(member: FamilyMember, siblingGender: Gender): string[]
     -getSiblingSpouse(member: FamilyMember, spouseGender: Gender): string[]
     -getChild(member: FamilyMember, childGender: Gender): string[]
