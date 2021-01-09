@@ -68,8 +68,6 @@ export class CommandUtil {
                     parameters[2]
                 );
                 break;
-            default:
-                break;
         }
 
         return result;
