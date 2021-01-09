@@ -99,3 +99,25 @@ describe("sample 3", function () {
         sinonLog.restore();
     });
 });
+
+describe("run invalid command", function () {
+    let app = new App(treeFilePath);
+
+    it("invalid command format", function () {
+        let output: string;
+        let sinonLog = sinon.spy(console, "log");
+        let command = "GET_RELATIONSHIP Remus";
+        let exampleOutput: string[] = [`Invalid command format\n${command}`];
+
+        app.runCommands([command]);
+
+        let callArray = sinonLog.getCalls();
+
+        for (let i = 0; i < exampleOutput.length; i++) {
+            output = exampleOutput[i];
+            expect(callArray[i].firstArg).equal(output);
+        }
+
+        sinonLog.restore();
+    });
+});
