@@ -4,8 +4,8 @@
     "description": "family tree",
     "main": "dist/src/app.js",
     "scripts": {
-        "build": "tsc",
-        "start": "tsc && node dist/src/geektrust.js",
+        "install": "tsc",
+        "start": "node dist/src/geektrust.js",
         "test": "mocha --require ts-node/register tests/**/*.test.ts",
         "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
     },
