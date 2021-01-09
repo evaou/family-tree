@@ -2,8 +2,6 @@ import { FamilyTree } from "./familyTree";
 import { FamilyMember, Gender } from "./familyMember";
 
 export class Relationship {
-    construct() {}
-
     find(tree: FamilyTree, name: string, relationship: string): string {
         if (name.length <= 0) {
             return;

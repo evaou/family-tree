@@ -54,3 +54,24 @@ describe("familyTree relationship", function () {
         expect(result).to.equal("NONE");
     });
 });
+
+describe("familyTree relationship with invalid value", function () {
+    let tree = new FamilyTreeBuilder(treeFilePath).build();
+    let relationship = new Relationship();
+    let result: string;
+
+    it("find relationship with empty member name", function () {
+        result = relationship.find(tree, "", "Paternal-Aunt");
+        expect(result).to.equal(undefined);
+    });
+
+    it("get child from member having no child", function () {
+        result = relationship.find(tree, "Charlie", "Daughter");
+        expect(result).to.equal("NONE");
+    });
+
+    it("find undefined relationship", function () {
+        result = relationship.find(tree, "Helen", "Grandma");
+        expect(result).to.equal("NONE");
+    });
+});
