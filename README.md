@@ -2,6 +2,17 @@
 
 The app will by default load the Arthur family tree during initialization. All below commands are executable under project root folder.
 
+
+## Run Geektrust test
+
+    ```
+    $ npm install --silent
+    $ npm start --silent ./tests/input/geektrust-example.txt
+    $ npm start --silent ./tests/input/geektrust-sample-1.txt
+    $ npm start --silent ./tests/input/geektrust-sample-2.txt
+    $ npm start --silent ./tests/input/geektrust-sample-3.txt
+    ```
+
 ## Docker Execution (Recommended)
 
 - Prepare docker image
