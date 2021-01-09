@@ -1,4 +1,4 @@
-import { App } from "./app";
+import { App } from "./src/app";
 
 const treeFilePath: string = "./res/geektrust-tree.txt";
 

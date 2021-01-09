@@ -2,10 +2,11 @@
     "name": "family-tree",
     "version": "1.0.0",
     "description": "family tree",
-    "main": "dist/src/app.js",
+    "main": "geektrust.ts",
     "scripts": {
+        "build": "tsc",
         "install": "tsc",
-        "start": "node dist/src/geektrust.js",
+        "start": "node dist/geektrust.js",
         "test": "mocha --require ts-node/register tests/**/*.test.ts",
         "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
     },
