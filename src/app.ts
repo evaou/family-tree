@@ -6,12 +6,8 @@ export class App {
     tree: FamilyTree;
     commandUtil: CommandUtil = new CommandUtil();
 
-    constructor(treeFilePath?: string) {
-        if (treeFilePath) {
-            this.tree = new FamilyTreeBuilder(treeFilePath).build();
-        } else {
-            this.tree = new FamilyTreeBuilder().build();
-        }
+    constructor(treeFilePath: string) {
+        this.tree = new FamilyTreeBuilder(treeFilePath).build();
     }
 
     runCommands(commands: string[]): void {

@@ -1,10 +1,11 @@
 import { expect } from "chai";
-import { FamilyTree } from "../src/familyTree";
 import { Relationship } from "../src/relationship";
 import { FamilyTreeBuilder } from "../src/familyTreeBuilder";
 
+const treeFilePath: string = "./res/tree.txt";
+
 describe("familyTree relationship", function () {
-    let tree = new FamilyTreeBuilder().build();
+    let tree = new FamilyTreeBuilder(treeFilePath).build();
     let relationship = new Relationship();
     let result: string;
 

@@ -2,7 +2,6 @@ import { FamilyMember } from "./familyMember";
 import { CommandUtil } from "./commandUtil";
 import { FamilyTree } from "./familyTree";
 
-const treeFilePath: string = "./res/tree.txt";
 const commandUtil = new CommandUtil();
 
 export class FamilyTreeBuilder {
@@ -11,7 +10,7 @@ export class FamilyTreeBuilder {
     private _tree: FamilyTree;
     private _filePath: string;
 
-    constructor(filePath: string = treeFilePath) {
+    constructor(filePath: string) {
         this._filePath = filePath;
         this._tree = new FamilyTree(this);
     }

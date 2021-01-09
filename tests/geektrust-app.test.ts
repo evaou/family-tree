@@ -2,7 +2,7 @@ import { expect } from "chai";
 import * as sinon from "sinon";
 import { App } from "../src/app";
 
-const treeFilePath: string = "./res/geektrust-tree.txt"
+const treeFilePath: string = "./res/geektrust-tree.txt";
 
 describe("geektrust example", function () {
     let app = new App(treeFilePath);

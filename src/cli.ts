@@ -1,6 +1,8 @@
 import { App } from "./app";
 
-let app = new App();
+const treeFilePath: string = "./res/tree.txt";
+
+let app = new App(treeFilePath);
 let args = process.argv.slice(2);
 let testFilePath = args[0];
 let regStr: RegExp = /^(\.\/)?input\//;
