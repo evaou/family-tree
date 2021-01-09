@@ -21,3 +21,32 @@ describe("familyTree add", function () {
         expect(result).to.equal("SPOUSE_ADDED");
     });
 });
+
+describe("familyTree add with invalid value", function () {
+    let tree = new FamilyTreeBuilder(treeFilePath).build();
+
+    it("add king queen with empty king name", function () {
+        const result = tree.addKingQueen("", "Margret");
+        expect(result).to.equal(undefined);
+    });
+
+    it("add child with empty child name", function () {
+        const result = tree.addChild("Margret", "", "Male");
+        expect(result).to.equal(undefined);
+    });
+
+    it("add spouse with empty spouse name", function () {
+        const result = tree.addSpouse("Bill", "", "Female");
+        expect(result).to.equal(undefined);
+    });
+
+    it("add spouse with nonexistent member name", function () {
+        const result = tree.addSpouse("BillFake", "Flora", "Female");
+        expect(result).to.equal("PERSON_NOT_FOUND");
+    });
+
+    it("find member with empty name", function () {
+        const result = tree.findFamilyMember("");
+        expect(result).to.equal(null);
+    });
+});
